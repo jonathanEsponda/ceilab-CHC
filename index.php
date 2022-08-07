@@ -1,6 +1,6 @@
 <?php include ("includes/header.php");
-     include ("database/db.php")
-      
+     include ("database/db.php");
+      session_start();
 ?>
 <!-- Mantener sesión iniciada -->
 <script>
@@ -13,6 +13,13 @@
 </script>
 
 <div class="container">
+    <!-- Mensajes -->
+    <?php  if(isset($_SESSION['mensaje'])){?>
+    <div class="alert alert-<?=$_SESSION['tipo_mensaje'];?> alert-dismissible fade show" role="alert">
+      <?= $_SESSION['mensaje'] ?>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+     <?php session_unset();}?>
     <!-- Sección carrusel -->
   <div id="carousel" class="carousel slide p-5" data-bs-ride="carousel" data-interval="100">
     <div class="carousel-inner">
@@ -58,7 +65,7 @@
             if($fecha_con > $fecha_actual) { 
         ?>
       <div class="col">
-        <a href="con_rob_inscribir.php">
+        <a href="con_inscribir.php?id=<?php echo $fila['cod_con']?>">
           <div class="card h-100">
             <img src="images/vespa.jpg" class="card-img-top" alt="vespa">
             <div class="card-body">
@@ -70,7 +77,7 @@
           </div>
         </a>
       </div>
-      <?php } }?> 
+        <?php } }?> 
   </div>
 </div>
 <?php include("includes/footer.php")?>
