@@ -24,7 +24,7 @@ if(!isset($_SESSION['rol'])){
                 
             <!-- Formulario -->
             <div class="card card-body">
-                <form action="con_rob_guardar.php" method="POST">
+                <form action="con_guardar.php" method="POST">
                 <h3 class="text-center text-info">Crear nuevo concurso</h3>
                     <div class="form-group">
                         <input type="text" name="nom_con" class="form-control"
@@ -64,10 +64,10 @@ if(!isset($_SESSION['rol'])){
                                 <td><?php echo $fila['nom_con']?></td>
                                 <td><?php echo $fila['fecha_con']?></td>
                                 <td>
-                                    <a href="con_rob_editar.php?id=<?php echo $fila['cod_con']?>" class="btn btn-secondary">
+                                    <a href="con_editar.php?id=<?php echo $fila['cod_con']?>" class="btn btn-secondary">
                                         Editar
                                     </a>
-                                    <a href="con_rob_borrar.php?id=<?php echo $fila['cod_con']?>" class="btn btn-danger">
+                                    <a href="con_borrar.php?id=<?php echo $fila['cod_con']?>" class="btn btn-danger">
                                         Borrar
                                     </a>
                                 </td>
