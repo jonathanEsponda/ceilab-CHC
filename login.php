@@ -28,10 +28,11 @@ session_start();
                             <div class="form-group pt-2">
                                 <input type="submit" name="ingresar" class="btn btn-info btn-md" value="Ingresar">
                             </div>
-                            
+                            <a href="<?php echo 'signup.php' ?>" class="login-link">¿No tienes cuenta?</a>
                         </form>
+                        
                     </div>
-                    <a href="<?php echo 'signup.php' ?>" class="login-link">¿No tienes cuenta?</a>
+                    
                 </div>
             </div>
         </div>

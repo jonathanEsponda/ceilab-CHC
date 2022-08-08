@@ -1,6 +1,6 @@
 <?php include ("includes/header.php");
      include ("database/db.php");
-      session_start();
+      
 ?>
 <!-- Mantener sesión iniciada -->
 <script>
@@ -79,5 +79,9 @@
       </div>
         <?php } }?> 
   </div>
+  <div class="row">
+  <a href="reservar.vista.php?id=<?php echo $id?>">Reservar la sala CEILAB</a>
+  </div>
+
 </div>
 <?php include("includes/footer.php")?>

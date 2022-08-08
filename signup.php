@@ -1,6 +1,6 @@
 <?php include("includes/header.php")?>
 
-<div id="signup">
+
         <div class="container">
             <div id="login-row" class="row justify-content-center align-items-center p-5">
                 <div id="login-column" class="col-md-6">
@@ -57,7 +57,7 @@
                 </div>
             </div>
         </div>
-    </div>
+
 
 
 <?php include("includes/footer.php")?>
