@@ -15,21 +15,21 @@ session_start();
  
 
 
-// Se crea la sesión 'rol'
-if($filas == true){
- $rol = $filas['cod_tipo'];
- $_SESSION['rol'] = $rol;
 
- // Se crea la sesión ID
- $id = $filas['cod_u'];
- $_SESSION['id'] = $id;
+if($filas == true){
+    // Se crea la sesión 'rol'
+    $rol = $filas['cod_tipo'];
+    $_SESSION['rol'] = $rol;
+        // Se crea la sesión ID
+        $id = $filas['cod_u'];
+        $_SESSION['id'] = $id;
 
  // Validación de tipo de usuario
  if($filas['cod_tipo'] == 1 && $filas['cod_u'] == true){ 
     header("location:home_admin.php");
 } else if($filas['cod_tipo'] == 2){
     header("location:home_user.php");
- } else {
+} else {
   echo "error al ingresar";
  }
 } else {
