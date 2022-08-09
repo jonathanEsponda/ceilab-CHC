@@ -15,7 +15,7 @@
     <!-- Barra de navegación -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <a href="index.php">
-          <IMG SRC="logo.jpg" ALIGN=LEFT WIDTH=60 HEIGHT=35 HSPACE="10" VSPACE="10" >   
+          <IMG SRC="images/logo.jpg" ALIGN=LEFT WIDTH=60 HEIGHT=35 HSPACE="10" VSPACE="10" >   
           </a>
           <div class="container-fluid">
             
@@ -33,21 +33,12 @@
               <!-- Inicio de sesión -->
               <nav class="navbar navbar-light bg-light">
                 <form class="container-fluid justify-content-start">
-                <a href="login.php"> 
+                <a href="login.vista.php"> 
                 <button class="btn btn-outline-success me-2" type="button">Iniciar Sesion</button>
                 </a>  
                 </form>
               </nav>
 
-              <!-- Cerrar sesión -->
-              <nav class="navbar navbar-light bg-light">
-                <form class="container-fluid justify-content-start">
-                <a href="close.php"> 
-                <button class="btn btn-outline-danger me-2" type="button">Cerrar Sesion</button>
-                </a>  
-                </form>
-              </nav>
-              
               <span></span>
             </div>
           </div>
@@ -101,6 +92,11 @@
                                     </label>
                                 </div>
                             </div>
+                            <ul>
+                              <?php if (!empty($mensajes)): ?>
+                              <?php echo $mensajes ?>
+                              <?php endif; ?>
+                            </ul>
                             <div class="form-group pt-2">
                                 <input type="submit" name="registrar" class="btn btn-success btn-md" value="Registrar">
                             </div>

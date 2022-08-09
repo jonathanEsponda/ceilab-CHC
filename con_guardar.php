@@ -1,7 +1,7 @@
 <?php
 
 include("database/db.php");
-session_start();
+
 $mensajes = '';
 if (isset($_POST['con_rob_guardar'])){
     $nom_con = $_POST['nom_con'];

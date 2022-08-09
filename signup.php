@@ -2,6 +2,7 @@
 include ("database/db.php");
 include ("functions.php");
 
+$mensajes = '';
 
 if (isset($_POST['registrar'])){
     if(strlen($_POST['nombre_u']) >= 1 && strlen($_POST['apellido_u']) >= 1 && strlen($_POST['ced_u']) >= 1 &&
@@ -17,13 +18,15 @@ if (isset($_POST['registrar'])){
         VALUES ('$nombre_u','$apellido_u','$ced_u','$email_u', ' $clave_u', '$tel_u', '$cod_tipo', 'activo')";
         $resultado = mysqli_query($conexion, $consulta);
         if ($resultado){
-            header("Location:login.vista.php");
+            $mensajes .= "<li class='mensajeVerde'>Usuario registrado correctamente</li>"; 
+            require "login.vista.php";
         } else {
-            header("Location:signup.vista.php");
+            $mensajes .= "<li class='mensajeVerde'>El usuario no se registró</li>"; 
+            require "signup.vista.php";
         }
         }
     } else {
-        header("Location:signup.php");
-
+        $mensajes .= "<li class='mensajeVerde'>El usuario no se registró</li>"; 
+            require "signup.vista.php";
     }
 ?>

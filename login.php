@@ -1,4 +1,3 @@
-
 <?php 
 include ("database/db.php");
 
@@ -7,6 +6,7 @@ $ced_u = $_POST['ced_u'];
 $clave_u = $_POST['clave_u'];
 session_start();
 
+$mensajes = '';
 //consulta
  $consulta = "SELECT * FROM usuarios WHERE ced_u = '$ced_u' AND clave_u = ' $clave_u' ";
  $datos =mysqli_query($conexion, $consulta);
@@ -29,16 +29,15 @@ if($filas == true){
   echo "error al ingresar";
  }
 } else {
-    $_SESSION['mensaje'] = 'Cédula o contraseña ingresadas son incorrectas';
-    $_SESSION['tipo_mensaje'] = 'danger';
-    header('location: login.vista.php');
+    
+    $mensajes .= "<li class='mensajeRojo'>La cédula o contraseña ingresadas son incorrectas</li>"; 
+
+    require "login.vista.php";
+    
 }
  mysqli_free_result($datos);
  mysqli_close($conexion);
 }
-
-
-
 
 
 ?>

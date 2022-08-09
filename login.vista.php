@@ -1,5 +1,3 @@
-<?php session_start();?>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -31,24 +29,6 @@
                 </li>
               </ul> 
               
-              <!-- Inicio de sesión -->
-              <nav class="navbar navbar-light bg-light">
-                <form class="container-fluid justify-content-start">
-                <a href="login.php"> 
-                <button class="btn btn-outline-success me-2" type="button">Iniciar Sesion</button>
-                </a>  
-                </form>
-              </nav>
-
-              <!-- Cerrar sesión -->
-              <nav class="navbar navbar-light bg-light">
-                <form class="container-fluid justify-content-start">
-                <a href="close.php"> 
-                <button class="btn btn-outline-danger me-2" type="button">Cerrar Sesion</button>
-                </a>  
-                </form>
-              </nav>
-              
               <span></span>
             </div>
           </div>
@@ -70,12 +50,12 @@
                                 <input type="password" name="clave_u" id="clave_u" class="form-control" required>
                             </div>
                             <br>
-                            <?php if(isset($_SESSION['mensaje'])){?>
-                            <div class="alert alert-<?=$_SESSION['tipo_mensaje'];?> alert-dismissible fade show" role="alert">
-                                <?= $_SESSION['mensaje'] ?>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                            <?php session_unset(); }?> 
+                            <!-- Mensajes -->
+                            <ul>
+                              <?php if (!empty($mensajes)): ?>
+                              <?php echo $mensajes ?>
+                              <?php endif; ?>
+                            </ul> 
                             
                             <div class="form-group pt-2">
                                 <input type="submit" name="ingresar" class="btn btn-info btn-md" value="Ingresar">

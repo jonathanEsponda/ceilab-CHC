@@ -1,10 +1,10 @@
 <?php include ("database/db.php");
 session_start();
  if(!isset($_SESSION['rol'])){
-   header('location: login.php');
+   header('location: login.vista.php');
  }else{
    if($_SESSION['rol'] != 2){
-       header('location: login.php');
+       header('location: login.vista.php');
    }
  }
 
@@ -39,12 +39,49 @@ session_start();
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Reservar sala
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="reservar.vista.php">Reservar la sala Ceilab</a></li>
+                  </ul>  
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Actividades
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="actividades_vista.php">Actividades realizadas en la sala</a></li>
+                  </ul>  
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Concursos Ceilab
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#">Inscripción a concursos</a></li>
+                  </ul> 
+                </li>
+
                 <li class="nav-item">
                   <a class="nav-link" href="nosotros.php">Nosotros</a>
                 </li>
-              </ul> 
+              </ul>
 
+              <!-- Nombre y apellido del usuario ingresado -->
+              <?php 
+              $consulta = "SELECT * FROM usuarios WHERE cod_u = $id";
+              $resultado = mysqli_query($conexion, $consulta);
+              $fila = mysqli_fetch_array($resultado);
+              $nombre = $fila['nombre_u'];
+              $apellido = $fila['apellido_u'];
+              ?>
+              <nav>
+                <form class="container-fluid justify-content-start"><?php echo $nombre.' '.$apellido?></form>
+              </nav>
+                
               <!-- Cerrar sesión -->
               <nav class="navbar navbar-light bg-light">
                 <form class="container-fluid justify-content-start">
@@ -60,21 +97,30 @@ session_start();
         </nav>
 
 <div class="container">
-    <!-- Mensajes -->
-    <?php  if(isset($_SESSION['mensaje'])){?>
-    <div class="alert alert-<?=$_SESSION['tipo_mensaje'];?> alert-dismissible fade show" role="alert">
-      <?= $_SESSION['mensaje'] ?>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-     <?php session_unset();}?>
-    <!-- Sección carrusel -->
-  <div id="carousel" class="carousel slide p-5" data-bs-ride="carousel" data-interval="100">
+<img src="images/panoramica2.jpg" class="d-block w-100 pt-5">
+
+   <!-- Sección carrusel -->
+   <div id="carousel" class="carousel slide p-5" data-bs-ride="carousel" data-interval="100">
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="images/moto.jpg" class="d-block w-100">
+      
+    <div class="carousel-item active">
+        <img src="images/sumo1.jpg" class="d-block w-100">
+      </div>
+      
+      <div class="carousel-item">
+        <img src="images/impresora.jpg" class="d-block w-100">
       </div>
       <div class="carousel-item">
-        <img src="images/vespa.jpg" class="d-block w-100">
+        <img src="images/muestra.jpg" class="d-block w-100">
+      </div>      
+      <div class="carousel-item">
+        <img src="images/herramientas.jpg" class="d-block w-100">
+      </div>
+      <div class="carousel-item">
+        <img src="images/sumo.jpg" class="d-block w-100">
+      </div>
+      <div class="carousel-item">
+        <img src="images/rack.jpg" class="d-block w-100">
       </div>
     </div> 
   
@@ -89,17 +135,12 @@ session_start();
       <span class="visually-hidden">Next</span>
     </button>
   
-    <!-- Indicadores del carrusel -->
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    </div>
-
   </div>
 
 
 
  <!-- Sección tarjetas de competencias -->
+ <h3 class="text-center text-success p-4">Concursos de robótica</h3>
   <div class="row row-cols-1 row-cols-md-3 g-4">
         <?php 
         $consulta = "SELECT * FROM concursos_rob";
@@ -142,10 +183,3 @@ session_start();
   });
 </script>
 <?php include("includes/footer.php")?>
-
-
-
-
-
-
-

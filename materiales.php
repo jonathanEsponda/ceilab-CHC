@@ -9,6 +9,9 @@ if(!isset($_SESSION['rol'])){
         header('location: login.php');
     }
 }
+if(isset($_SESSION['id'])){
+  $id = $_SESSION['id'];
+}  
 ?>
 
 <!doctype html>
@@ -37,11 +40,67 @@ if(!isset($_SESSION['rol'])){
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Reservas
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="reservas_lista.php">Reservas a la sala</a></li>
+                  </ul>  
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Actividades
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="actividades_lista.php">Actividades realizadas</a></li>
+                  </ul>  
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Usuarios
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="usuarios_lista.php">Usuarios registrados</a></li>
+                  </ul>  
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Concursos Ceilab
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="con_rob.php">Administrar concursos</a></li>
+                    <li><a class="dropdown-item" href="con_inscriptos.php">Inscriptos</a></li>
+                  </ul> 
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Materiales
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="materiales.php">Administrar materiales</a></li>
+                  </ul>  
+                </li>
                 <li class="nav-item">
                   <a class="nav-link" href="nosotros.php">Nosotros</a>
                 </li>
               </ul>
+
+              <!-- Nombre y apellido del usuario ingresado -->
+              <?php 
+              $consulta = "SELECT * FROM usuarios WHERE cod_u = $id";
+              $resultado = mysqli_query($conexion, $consulta);
+              $fila = mysqli_fetch_array($resultado);
+              $nombre = $fila['nombre_u'];
+              $apellido = $fila['apellido_u'];
+              ?>
+              <nav>
+                <form class="container-fluid justify-content-start"><?php echo $nombre.' '.$apellido?></form>
+              </nav>
+              
 
               <!-- Cerrar sesión -->
               <nav class="navbar navbar-light bg-light">
@@ -61,13 +120,11 @@ if(!isset($_SESSION['rol'])){
     <div class="row">
         <div class="col-md-4">
             <!-- Mensajes -->
-            <?php  if(isset($_SESSION['mensaje'])){?>
-            <div class="alert alert-<?=$_SESSION['tipo_mensaje'];?> alert-dismissible fade show" role="alert">
-                <?= $_SESSION['mensaje'] ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            <?php } ?>
-                
+            <ul>
+                <?php if (!empty($mensajes)): ?>
+                <?php echo $mensajes ?>
+                <?php endif; ?>
+            </ul>                
                 
             <!-- Formulario -->
             <div class="card card-body">
@@ -128,11 +185,6 @@ if(!isset($_SESSION['rol'])){
 
     </div>
 </div>
-
-
-
-
-
 
 <?php
 include("includes/footer.php");

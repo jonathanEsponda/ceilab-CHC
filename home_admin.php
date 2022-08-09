@@ -93,21 +93,30 @@ session_start();
         </nav>
 
         <div class="container">
-    <!-- Mensajes -->
-    <?php  if(isset($_SESSION['mensaje'])){?>
-    <div class="alert alert-<?=$_SESSION['tipo_mensaje'];?> alert-dismissible fade show" role="alert">
-      <?= $_SESSION['mensaje'] ?>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-     <?php session_unset();}?>
+        <img src="images/panoramica2.jpg" class="d-block w-100 pt-5">
+
     <!-- Sección carrusel -->
-  <div id="carousel" class="carousel slide p-5" data-bs-ride="carousel" data-interval="100">
+    <div id="carousel" class="carousel slide p-5" data-bs-ride="carousel" data-interval="100">
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="images/moto.jpg" class="d-block w-100">
+      
+    <div class="carousel-item active">
+        <img src="images/sumo1.jpg" class="d-block w-100">
+      </div>
+      
+      <div class="carousel-item">
+        <img src="images/impresora.jpg" class="d-block w-100">
       </div>
       <div class="carousel-item">
-        <img src="images/vespa.jpg" class="d-block w-100">
+        <img src="images/muestra.jpg" class="d-block w-100">
+      </div>      
+      <div class="carousel-item">
+        <img src="images/herramientas.jpg" class="d-block w-100">
+      </div>
+      <div class="carousel-item">
+        <img src="images/sumo.jpg" class="d-block w-100">
+      </div>
+      <div class="carousel-item">
+        <img src="images/rack.jpg" class="d-block w-100">
       </div>
     </div> 
   
@@ -122,17 +131,10 @@ session_start();
       <span class="visually-hidden">Next</span>
     </button>
   
-    <!-- Indicadores del carrusel -->
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    </div>
-
   </div>
 
-
-
- <!-- Sección tarjetas de competencias -->
+ <!-- Sección tarjetas de concursos -->
+ <h3 class="text-center text-success p-4">Concursos de robótica</h3>
   <div class="row row-cols-1 row-cols-md-3 g-4">
         <?php 
         $consulta = "SELECT * FROM concursos_rob";
