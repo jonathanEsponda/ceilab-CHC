@@ -28,35 +28,7 @@
                 <li class="nav-item">
                   <a class="nav-link" href="nosotros.php">Nosotros</a>
                 </li>
-                
-                <!--
-                <li class="nav-item">
-                  <a class="nav-link" href="competencias_creadas.php">Competencias Ceilab</a>
-                </li>
-                </li>
-
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Competencias
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="competencias_creadas.php">Inscripciones</a></li>
-                    <li><a class="dropdown-item" href="competencia_lista.php">Lista de competidores</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Celular</a></li>
-                  </ul>
-                </li>--> 
               </ul> 
-              
-              <!-- Nuevo registro -->
-                <!-- <nav class="navbar navbar-light bg-light">
-                  <form class="container-fluid justify-content-start">
-                  <a href="signup.php"> 
-                    <button class="btn btn-outline-primary me-2" type="button">Registrarse</button>
-                  </a>  
-                  </form>
-                </nav> -->
-              
               <!-- Inicio de sesión -->
               <nav class="navbar navbar-light bg-light">
                 <form class="container-fluid justify-content-start">

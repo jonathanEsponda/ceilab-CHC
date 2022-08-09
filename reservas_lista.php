@@ -70,34 +70,31 @@ if(!isset($_SESSION['rol'])){
                     <thead>
                         <tr>
                             <th>Código</th>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Cédula</th>
-                            <th>Email</th>
-                            <th>Teléfono</th>
-                            <th>Tipo de usuario</th>
-                            <th></th>
+                            <th>Grupo</th>
+                            <th>Docente</th>
+                            <th>Área de trabajo</th>
+                            <th>Propuesta</th>
+                            <th>Fecha de la reserva</th>
+                            <th>Hora de inicio</th>
+                            <th>Hora de fin.</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php 
-                        $consulta = "SELECT * FROM usuarios INNER JOIN tipos_usuario ON usuarios.cod_tipo = tipos_usuario.cod_tipo";
+                        $consulta = "SELECT * FROM reservas INNER JOIN usuarios ON reservas.cod_u = usuarios.cod_u 
+                        INNER JOIN areas_reserva ON reservas.cod_area = areas_reserva.cod_area ORDER BY reservas.fecha_res";
                         $result_comp = mysqli_query($conexion, $consulta);
 
                         while($fila = mysqli_fetch_array($result_comp)) { ?>
                             <tr>
-                                <td><?php echo $fila['cod_u']?></td>
-                                <td><?php echo $fila['nombre_u']?></td>
+                                <td><?php echo $fila['cod_res']?></td>
+                                <td><?php echo $fila['grupo_res']?></td>
                                 <td><?php echo $fila['apellido_u']?></td>
-                                <td><?php echo $fila['ced_u']?></td>
-                                <td><?php echo $fila['email_u']?></td>
-                                <td><?php echo $fila['tel_u']?></td>
-                                <td><?php echo $fila['nom_tipo']?></td>
-                                <td>
-                                    <a href="usuario_editar.php?id=<?php echo $fila['cod_u']?>" class="btn btn-secondary">
-                                        Editar
-                                    </a>
-                                </td>
+                                <td><?php echo $fila['nom_area']?></td>
+                                <td><?php echo $fila['propuesta_res']?></td>
+                                <td><?php echo $fila['fecha_res']?></td>
+                                <td><?php echo $fila['hora_ini_res']?></td>
+                                <td><?php echo $fila['hora_fin_res']?></td> 
                             </tr>
                         <?php } ?>
                     </tbody>

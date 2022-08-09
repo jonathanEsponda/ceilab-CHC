@@ -1,7 +1,7 @@
 <?php
     include("database/db.php");
-    session_start();
-
+    
+    $mensajes = '';
     
      if (isset($_GET['id'])) {
 
@@ -12,10 +12,9 @@
         if (!$resultado) {
             die("Consulta Fallida");
         }
-
-        $_SESSION['mensaje'] = 'Competencia eliminada correctamente';
-        $_SESSION['tipo_mensaje'] = 'danger';
-        header("Location: con_rob.php");
+        $mensajes .= "<li class='mensajeRojo'>Competencia eliminada correctamente</li>"; 
+        
+        require "con_rob.php";
    
      }
 
