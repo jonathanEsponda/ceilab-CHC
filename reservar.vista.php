@@ -3,15 +3,15 @@ include("database/db.php");
 
 session_start();
 if(!isset($_SESSION['rol'])){
-    header('location: login.php');
+    header('location: login.vista.php');
   }else{
     if($_SESSION['rol'] != 2){
-        header('location: login.php');
+        header('location: login.vista.php');
     }
   }
 
-  if(isset($_GET['id'])){
-    $id = $_GET['id'];
+  if(isset(($_SESSION['id']))){
+    $id = $_SESSION['id'];
 
     $consulta = "SELECT * FROM usuarios WHERE cod_u = '$id'";
     $datos =mysqli_query($conexion, $consulta);
@@ -46,7 +46,7 @@ if(!isset($_SESSION['rol'])){
   <body>
     <!-- Barra de navegación -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a href="#">
+          <a href="home_user.php">
           <IMG SRC="images/logo.jpg" ALIGN=LEFT WIDTH=60 HEIGHT=35 HSPACE="10" VSPACE="10" >   
           </a>
           <div class="container-fluid">
@@ -57,9 +57,41 @@ if(!isset($_SESSION['rol'])){
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Reservar sala
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="reservar.vista.php">Reservar la sala Ceilab</a></li>
+                  </ul>  
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Actividades
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#">Actividades realizadas en la sala</a></li>
+                  </ul>  
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Concursos Ceilab
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="con_rob_vista_usuario.php">Inscripción a concursos</a></li>
+                  </ul> 
+                </li>
+
                 <li class="nav-item">
                   <a class="nav-link" href="nosotros.php">Nosotros</a>
                 </li>
+              </ul>
+
+              
+              <nav>
+                <form class="container-fluid justify-content-start"><?php echo $nombre_u.' '.$apellido_u?></form>
+              </nav>
               </ul> 
 
               <!-- Cerrar sesión -->

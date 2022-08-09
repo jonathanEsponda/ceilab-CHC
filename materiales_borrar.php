@@ -1,8 +1,6 @@
 <?php
     include("database/db.php");
-    session_start();
-
-    
+    $mensajes = '';
      if (isset($_GET['id'])) {
 
         $cod_mat = $_GET['id'];
@@ -13,9 +11,9 @@
             die("Consulta Fallida");
         }
 
-        $_SESSION['mensaje'] = 'Material eliminado correctamente';
-        $_SESSION['tipo_mensaje'] = 'danger';
-        header("Location: materiales.php");
+        $mensajes .= "<li class='mensajeRojo'>Material eliminado correctamente</li>"; 
+        
+        require "materiales.php";
    
      }
 

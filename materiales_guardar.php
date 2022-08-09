@@ -1,8 +1,8 @@
 <?php
 
 include("database/db.php");
-session_start();
 
+$mensajes = '';
 if (isset($_POST['materiales_guardar'])){
     $nom_mat = $_POST['nom_mat'];
     $cantidad = $_POST['cantidad'];
@@ -15,10 +15,9 @@ if (isset($_POST['materiales_guardar'])){
         die("Consulta fallida");
     }
 
-    $_SESSION['mensaje'] = 'Material ingresado correctamente';
-    $_SESSION['tipo_mensaje'] = 'success';
+    $mensajes .= "<li class='mensajeVerde'>Material ingresado correctamente</li>"; 
 
-    header("Location: materiales.php");
+    require "materiales.php";
 }
 
 

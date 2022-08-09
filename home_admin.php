@@ -40,10 +40,6 @@ session_start();
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                
-                <li class="nav-item">
-                  <a class="nav-link" href="nosotros.php">Nosotros</a>
-                </li>
 
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -51,6 +47,14 @@ session_start();
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="reservas_lista.php">Reservas a la sala</a></li>
+                  </ul>  
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Actividades
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="actividades_lista.php">Actividades realizadas</a></li>
                   </ul>  
                 </li>
 
@@ -73,11 +77,30 @@ session_start();
                   </ul> 
                 </li>
 
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Materiales
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="materiales.php">Administrar materiales</a></li>
+                  </ul>  
+                </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="materiales.php">Materiales</a>
+                  <a class="nav-link" href="nosotros.php">Nosotros</a>
                 </li>
               </ul>
 
+              <!-- Nombre y apellido del usuario ingresado -->
+              <?php 
+              $consulta = "SELECT * FROM usuarios WHERE cod_u = $id";
+              $resultado = mysqli_query($conexion, $consulta);
+              $fila = mysqli_fetch_array($resultado);
+              $nombre = $fila['nombre_u'];
+              $apellido = $fila['apellido_u'];
+              ?>
+              <nav>
+                <form class="container-fluid justify-content-start"><?php echo $nombre.' '.$apellido?></form>
+              </nav>
               <!-- Cerrar sesión -->
               <nav class="navbar navbar-light bg-light">
                 <form class="container-fluid justify-content-start">
@@ -93,13 +116,7 @@ session_start();
         </nav>
 
         <div class="container">
-    <!-- Mensajes -->
-    <?php  if(isset($_SESSION['mensaje'])){?>
-    <div class="alert alert-<?=$_SESSION['tipo_mensaje'];?> alert-dismissible fade show" role="alert">
-      <?= $_SESSION['mensaje'] ?>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-     <?php session_unset();}?>
+    
     <!-- Sección carrusel -->
   <div id="carousel" class="carousel slide p-5" data-bs-ride="carousel" data-interval="100">
     <div class="carousel-inner">

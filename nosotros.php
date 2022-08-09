@@ -1,15 +1,5 @@
 <?php 
-// if(!isset($_SESSION['rol'])){
-//   header('location: login.vista.php');
-// }else{
-//   if($_SESSION['rol'] != 1){
-//       header('location: login.vista.php');
-//   }
-// }
 
-// if(isset($_SESSION['id'])){
-// $id = $_SESSION['id'];
-// }
 ?>
 
 <!doctype html>
@@ -28,7 +18,7 @@
   <body>
     <!-- Barra de navegación -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a href="#">
+          <a href="index.php">
           <IMG SRC="images/logo.jpg" ALIGN=LEFT WIDTH=60 HEIGHT=35 HSPACE="10" VSPACE="10" >   
           </a>
           <div class="container-fluid">
