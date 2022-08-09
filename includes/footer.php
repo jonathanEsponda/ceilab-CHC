@@ -8,28 +8,26 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6 col-md-3 item">
-                        <h3>Services</h3>
+                        <h3>Servicios</h3>
                         <ul>
-                            <li><a href="#">Web design</a></li>
-                            <li><a href="#">Development</a></li>
-                            <li><a href="#">Hosting</a></li>
+                            <li><a href="./reservar.vista.php">Reservas</a></li>
+                            <li><a href="./con_inscribir">Concursos de robótica</a></li>
+                            <li><a href="#">Actividades </a></li>
                         </ul>
                     </div>
                     <div class="col-sm-6 col-md-3 item">
-                        <h3>About</h3>
+                        <h3>Acerca de</h3>
                         <ul>
-                            <li><a href="#">Company</a></li>
-                            <li><a href="#">Team</a></li>
-                            <li><a href="#">Careers</a></li>
+                            <li><a href="./nosotros.php">Nosotros</a></li>
                         </ul>
                     </div>
                     <div class="col-md-6 item text">
-                        <h3>Company Name</h3>
-                        <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel in justo.</p>
+                        <h3>Ceilab Cat. Harriague de Castaños</h3>
+                        <p>Los laboratorios de Plan Ceibal permiten incorporar el Pensamiento computacional aplicado a los proyectos de resolución de problemas y prototipado. 
+                            Entre los temas factibles de desarrollo y aplicación se encuentra la implementación de tecnología 3D.</p>
                     </div>
-                    <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
                 </div>
-                <p class="copyright">Company Name © 2018</p>
+                <p class="copyright">Grupo3 © 2022</p>
             </div>
         </footer>
     </div>

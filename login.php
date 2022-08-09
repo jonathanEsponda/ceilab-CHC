@@ -1,4 +1,3 @@
-
 <?php 
 include ("database/db.php");
 
@@ -39,9 +38,6 @@ if($filas == true){
  mysqli_free_result($datos);
  mysqli_close($conexion);
 }
-
-
-
 
 
 ?>
