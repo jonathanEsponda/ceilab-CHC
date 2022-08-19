@@ -116,15 +116,29 @@ session_start();
         </nav>
 
         <div class="container">
-    
+<img src="images/panoramica2.jpg" class="d-block w-100 pt-5">
     <!-- Sección carrusel -->
-  <div id="carousel" class="carousel slide p-5" data-bs-ride="carousel" data-interval="100">
+    <div id="carousel" class="carousel slide p-5" data-bs-ride="carousel" data-interval="100">
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="images/moto.jpg" class="d-block w-100">
+      
+    <div class="carousel-item active">
+        <img src="images/sumo1.jpg" class="d-block w-100">
+      </div>
+      
+      <div class="carousel-item">
+        <img src="images/impresora.jpg" class="d-block w-100">
       </div>
       <div class="carousel-item">
-        <img src="images/vespa.jpg" class="d-block w-100">
+        <img src="images/muestra.jpg" class="d-block w-100">
+      </div>      
+      <div class="carousel-item">
+        <img src="images/herramientas.jpg" class="d-block w-100">
+      </div>
+      <div class="carousel-item">
+        <img src="images/sumo.jpg" class="d-block w-100">
+      </div>
+      <div class="carousel-item">
+        <img src="images/rack.jpg" class="d-block w-100">
       </div>
     </div> 
   
@@ -139,17 +153,10 @@ session_start();
       <span class="visually-hidden">Next</span>
     </button>
   
-    <!-- Indicadores del carrusel -->
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    </div>
-
   </div>
 
-
-
- <!-- Sección tarjetas de competencias -->
+ <!-- Sección tarjetas de concursos -->
+ <h3 class="text-center text-success p-4">Concursos de robótica</h3>
   <div class="row row-cols-1 row-cols-md-3 g-4">
         <?php 
         $consulta = "SELECT * FROM concursos_rob";
@@ -164,7 +171,7 @@ session_start();
       <div class="col">
         <a href="con_inscribir.php?id=<?php echo $fila['cod_con']?>">
           <div class="card h-100">
-            <img src="images/vespa.jpg" class="card-img-top" alt="vespa">
+            <img src="images/sumo.jpg" class="card-img-top" alt="vespa">
             <div class="card-body">
               <h5 class="card-title">
                 <?php echo $fila['nom_con']; ?>

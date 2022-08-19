@@ -186,11 +186,6 @@ if(isset($_SESSION['id'])){
     </div>
 </div>
 
-
-
-
-
-
 <?php
 include("includes/footer.php");
 ?>
