@@ -30,35 +30,8 @@
                 <li class="nav-item">
                   <a class="nav-link" href="nosotros.php">Nosotros</a>
                 </li>
-                
-                <!--
-                <li class="nav-item">
-                  <a class="nav-link" href="competencias_creadas.php">Competencias Ceilab</a>
-                </li>
-                </li>
-
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Competencias
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="competencias_creadas.php">Inscripciones</a></li>
-                    <li><a class="dropdown-item" href="competencia_lista.php">Lista de competidores</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Celular</a></li>
-                  </ul>
-                </li>--> 
-              </ul> 
-              
-              <!-- Nuevo registro -->
-                <!-- <nav class="navbar navbar-light bg-light">
-                  <form class="container-fluid justify-content-start">
-                  <a href="signup.php"> 
-                    <button class="btn btn-outline-primary me-2" type="button">Registrarse</button>
-                  </a>  
-                  </form>
-                </nav> -->
-              
+      
+              </ul>
               <!-- Inicio de sesión -->
               <nav class="navbar navbar-light bg-light">
                 <form class="container-fluid justify-content-start">
@@ -83,12 +56,7 @@
 <div class="container">
 <img src="images/panoramica2.jpg" class="d-block w-100 pt-5">
     <!-- Mensajes -->
-    <?php  if(isset($_SESSION['mensaje'])){?>
-    <div class="alert alert-<?=$_SESSION['tipo_mensaje'];?> alert-dismissible fade show" role="alert">
-      <?= $_SESSION['mensaje'] ?>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-     <?php session_unset();}?>
+
     <!-- Sección carrusel -->
   <div id="carousel" class="carousel slide p-5" data-bs-ride="carousel" data-interval="100">
     <div class="carousel-inner">
@@ -143,10 +111,8 @@
         while($fila = mysqli_fetch_array($resultado)){ 
           $fecha_con = $fila['fecha_con'];
           $fecha_actual = date('Y-m-d', time());
-            if($fecha_con > $fecha_actual) { 
         ?>
       <div class="col">
-        <a href="con_inscribir.php?id=<?php echo $fila['cod_con']?>">
           <div class="card h-100">
             <img src="images/sumo.jpg" class="card-img-top" alt="vespa">
             <div class="card-body">
@@ -156,9 +122,8 @@
               <p class="card-text"><?php echo $fila['fecha_con']?></p>
             </div>
           </div>
-        </a>
       </div>
-        <?php } }?> 
+        <?php }?> 
   </div>
   
 

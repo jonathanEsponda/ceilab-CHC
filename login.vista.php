@@ -4,11 +4,9 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- Bootstrap CSS -->
     <link  rel="stylesheet" href="css/bootstrap.css">
     <link  rel="stylesheet" href="css/style.css">
-
     <title>CEILAB</title>
   </head>
   <body>
@@ -17,8 +15,7 @@
           <a href="index.php">
           <IMG SRC="images/logo.jpg" ALIGN=LEFT WIDTH=60 HEIGHT=35 HSPACE="10" VSPACE="10" >   
           </a>
-          <div class="container-fluid">
-            
+          <div class="container-fluid">         
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -27,8 +24,7 @@
                 <li class="nav-item">
                   <a class="nav-link" href="nosotros.php">Nosotros</a>
                 </li>
-              </ul> 
-              
+              </ul>             
               <span></span>
             </div>
           </div>
@@ -39,7 +35,6 @@
                 <div id="login-column" class="col-md-6">
                     <div id="login-box" class="col-md-12">
                         <form id="login-form" class="form" action="login.php" method="POST">
-                       
                             <h3 class="text-center text-info">Ingresar</h3>
                             <div class="form-group">
                                 <label for="ced_u" class="text-info p-1">Cedula de usuario:</label><br>
@@ -56,18 +51,14 @@
                               <?php echo $mensajes ?>
                               <?php endif; ?>
                             </ul> 
-                            
                             <div class="form-group pt-2">
                                 <input type="submit" name="ingresar" class="btn btn-info btn-md" value="Ingresar">
                             </div>
                             <a href="<?php echo 'signup.vista.php' ?>" class="login-link">¿No tienes cuenta?</a>
-                        </form>
-                        
-                    </div>
-                    
+                        </form> 
+                    </div>  
                 </div>
             </div>
         </div>
     </div>
-
 <?php include("includes/footer.php") ?>

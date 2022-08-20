@@ -111,6 +111,11 @@ if(!isset($_SESSION['rol'])){
  <div class="container">
             <div id="login-row" class="row justify-content-center align-items-center p-5">
                 <div id="login-column" class="col-md-6">
+                  <ul>
+                    <?php if (!empty($mensajes)): ?>
+                    <?php echo $mensajes ?>
+                    <?php endif; ?>
+                  </ul>
                     <div id="login-box" class="col-md-12">
                         <form id="login-form" class="form" action="reservar.php?id=<?php echo $id;?>" method="post">
                             <h3 class="text-center text-success">Solicitud de uso de la sala</h3>

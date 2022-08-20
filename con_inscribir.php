@@ -33,31 +33,33 @@ if (isset($_POST['con_inscribir'])){
         if ($resultado == true) {
             
             //Consultar el ultimo concursante para obtener su ID
-            $consulta2 = "SELECT cod_concursante FROM concursantes";
+            $consulta2 = "SELECT * FROM concursantes WHERE cod_concursante = (SELECT MAX(cod_concursante) from concursantes) ";
             $resultado2 = mysqli_query($conexion, $consulta2);
             $fila = mysqli_fetch_array($resultado2);
-            $cod_concursante = $fila[count($fila)-1];
-            } else {
-                die("Consulta 2 fallida");
-                 echo "Consulta 2 fallida";
-                 if ($resultado2 == true) {
-                     // Insertar datos en la tabla inscribe
-                     $consulta3 = "INSERT INTO inscribe(cod_con, cod_concursante, fecha_inscripcion) VALUES ('$cod_con','$cod_concursante','$fecha_inscripcion')";
-                     $resultado3 = mysqli_query($conexion, $consulta3);
-
-                 } else {
-                    die("Consulta 3 fallida");
-                    echo "Consulta 3 fallida";
-                     
+            $cod_concursante = $fila[0];
+          } else {
+            die("Consulta 2 fallida");
+             echo "Consulta 2 fallida";
+            }
+            if ($cod_concursante == true) {
                   
-                     if (!$resultado3) {
-                     die("Consulta 2 fallida");
-                     } 
-                     $mensajes .= "<li class='mensajeVerde'>concursante registrado correctamente</li>"; 
-                    require "index.php";
-
-             }
-        }
+              // Insertar datos en la tabla inscribe
+              $consulta3 = "INSERT INTO inscribe(cod_con, cod_concursante, fecha_inscripcion) VALUES ('$cod_con','$cod_concursante','$fecha_inscripcion')";
+              $resultado3 = mysqli_query($conexion, $consulta3);
+              
+              if (!$resultado3) {
+                die("Consulta 2 fallida");
+                } else{
+                $mensajes .= "<li class='mensajeVerde'>Concursante registrado correctamente</li>"; 
+              }
+              } else {
+             die("Consulta 3 fallida");
+             echo "Consulta 3 fallida";
+           }
+               
+                 
+                  
+                
         mysqli_free_result($resultado2);
         mysqli_close($conexion);
 }       
@@ -78,7 +80,7 @@ if (isset($_POST['con_inscribir'])){
   <body>
     <!-- Barra de navegación -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a href="#">
+          <a href="home_user.php">
           <IMG SRC="images/logo.jpg" ALIGN=LEFT WIDTH=60 HEIGHT=35 HSPACE="10" VSPACE="10" >   
           </a>
           <div class="container-fluid">
@@ -141,12 +143,13 @@ if (isset($_POST['con_inscribir'])){
 <div class="container p-4">
         <div class="row">
             <!-- Mensajes -->
+            
+            <div class="col-md-6 mx-auto">
             <ul>
                 <?php if (!empty($mensajes)): ?>
                 <?php echo $mensajes ?>
                 <?php endif; ?>
             </ul>
-            <div class="col-md-6 mx-auto">
             <h3 class="text-center text-success">Inscripción a concurso: <?php echo $nom_con;?></h3>
                 <div class="card card-body ">
                     <form action="con_inscribir.php?id=<?php echo $_GET['id']; ?>" method="POST">
