@@ -111,7 +111,11 @@ if(!isset($_SESSION['rol'])){
  <div class="container">
             <div id="login-row" class="row justify-content-center align-items-center p-5">
                 <div id="login-column" class="col-md-6">
+<<<<<<< HEAD
                   <ul>
+=======
+                
+>>>>>>> jona
                     <?php if (!empty($mensajes)): ?>
                     <?php echo $mensajes ?>
                     <?php endif; ?>
