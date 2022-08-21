@@ -61,7 +61,7 @@ $mensajes = '';
   
   
   
-  
+} 
   $mensajes .= "<li class='mensajeVerde'>Concursante registrado correctamente</li>"; 
 
 ?>
