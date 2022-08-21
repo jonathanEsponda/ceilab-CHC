@@ -155,7 +155,7 @@ session_start();
       <div class="col">
         <a href="con_inscribir.php?id=<?php echo $fila['cod_con']?>">
           <div class="card h-100">
-            <img src="images/vespa.jpg" class="card-img-top" alt="vespa">
+            <img src="images/sumo.jpg" class="card-img-top" alt="vespa">
             <div class="card-body">
               <h5 class="card-title">
                 <?php echo $fila['nom_con']; ?>
