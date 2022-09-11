@@ -1,6 +1,18 @@
 <?php
 include("database/db.php");
-
+session_start();
+ 
+if(!isset($_SESSION['rol'])){
+   header('location: login.vista.php');
+ }else{
+   if($_SESSION['rol'] != 2){
+       header('location: login.vista.php');
+   }
+ }
+  
+if(isset($_SESSION['id'])){
+  $id = $_SESSION['id'];
+}   
 
 $mensajes = '';
 
@@ -122,7 +134,16 @@ if (isset($_POST['con_inscribir'])){
               </ul>
 
               <!-- Nombre y apellido del usuario ingresado -->
-              
+              <?php 
+              $consulta = "SELECT * FROM usuarios WHERE cod_u = $id";
+              $resultado = mysqli_query($conexion, $consulta);
+              $fila = mysqli_fetch_array($resultado);
+              $nombre = $fila['nombre_u'];
+              $apellido = $fila['apellido_u'];
+              ?>
+              <nav>
+                <form class="container-fluid justify-content-start"><?php echo $nombre.' '.$apellido?></form>
+              </nav>
               
                 
               <!-- Cerrar sesión -->
@@ -142,6 +163,7 @@ if (isset($_POST['con_inscribir'])){
 
 <div class="container p-4">
         <div class="row">
+<<<<<<< HEAD
             <!-- Mensajes -->
             
             <div class="col-md-6 mx-auto">
@@ -150,6 +172,10 @@ if (isset($_POST['con_inscribir'])){
                 <?php echo $mensajes ?>
                 <?php endif; ?>
             </ul>
+=======
+
+            <div class="col-md-6 mx-auto">
+>>>>>>> jona
             <h3 class="text-center text-success">Inscripción a concurso: <?php echo $nom_con;?></h3>
                 <div class="card card-body ">
                     <form action="con_inscribir.php?id=<?php echo $_GET['id']; ?>" method="POST">

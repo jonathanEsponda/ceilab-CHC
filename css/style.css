@@ -1,6 +1,9 @@
 body {
   min-height: 100vh;
 }
+#panoramica {
+  max-width: 100%;
+}
 img {
   max-width: 100%;
   height: auto;

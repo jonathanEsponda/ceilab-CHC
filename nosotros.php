@@ -1,4 +1,10 @@
+<?php
+include('database/db.php');
+session_start();
 
+
+
+?>
 
 <!doctype html>
 <html lang="en">
@@ -16,7 +22,15 @@
   <body>
     <!-- Barra de navegación -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a href="index.php">
+        
+        <!-- Direccionamiento de Icono principal -->
+        <?php if(!isset($_SESSION['id'])){ ?>  
+        <a href="index.php">
+          <?php } else if($_SESSION['rol'] == 1) {?>
+            <a href="home_admin.php">
+              <?php } else { ?>
+                <a href="home_user.php">
+                <?php } ?>
           <IMG SRC="images/logo.jpg" ALIGN=LEFT WIDTH=60 HEIGHT=35 HSPACE="10" VSPACE="10" >   
           </a>
           <div class="container-fluid">
@@ -25,12 +39,64 @@
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              
+              
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                
+              <?php if(isset($_SESSION['id'])) { ?>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Reservas
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="reservas_lista.php">Reservas a la sala</a></li>
+                  </ul>  
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Usuarios
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="usuarios_lista.php">Usuarios registrados</a></li>
+                  </ul>  
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Concursos Ceilab
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="con_rob.php">Administrar concursos</a></li>
+                    <li><a class="dropdown-item" href="con_inscriptos.php">Inscriptos</a></li>
+                  </ul> 
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="materiales.php">Materiales</a>
+                </li>
+                <?php } ?>
                 <li class="nav-item">
                   <a class="nav-link" href="nosotros.php">Nosotros</a>
                 </li>
-              </ul> 
+              
+                </ul>
+                <!-- Nombre y apellido del usuario ingresado -->
+              <?php 
+              if(isset($_SESSION['id'])){
+                $id = $_SESSION['id'];
+                 
+              $consulta = "SELECT * FROM usuarios WHERE cod_u = $id";
+              $resultado = mysqli_query($conexion, $consulta);
+              $fila = mysqli_fetch_array($resultado);
+              $nombre = $fila['nombre_u'];
+              $apellido = $fila['apellido_u'];
+              ?>
+
+              <nav>
+                <form class="container-fluid justify-content-start"><?php echo $nombre.' '.$apellido?></form>
+              </nav>
+              
+            
 
               <!-- Cerrar sesión -->
               <nav class="navbar navbar-light bg-light">
@@ -40,8 +106,28 @@
                 </a>  
                 </form>
               </nav>
-              
+              <?php } else {?>
+                 
+                <!-- Inicio de sesión -->
+              <nav class="navbar navbar-light bg-light">
+                <form class="container-fluid justify-content-start">
+                <a href="login.vista.php"> 
+                <button class="btn btn-outline-success me-2" type="button">Iniciar Sesion</button>
+                </a>  
+                </form>
+              </nav>
+
+              <!-- Registro -->
+              <nav class="navbar navbar-light bg-light">
+                <form class="container-fluid justify-content-start">
+                <a href="signup.vista.php"> 
+                <button class="btn btn-outline-primary me-2" type="button">Registrarse</button>
+                </a>  
+                </form>
+              </nav>
+              <?php }?>
               <span></span>
+              
             </div>
           </div>
         </nav>
