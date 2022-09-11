@@ -30,8 +30,8 @@ if(isset($_SESSION['id'])){
   </head>
   <body>
     <!-- Barra de navegación -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a href="home_admin.php">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a href="#">
           <IMG SRC="images/logo.jpg" ALIGN=LEFT WIDTH=60 HEIGHT=35 HSPACE="10" VSPACE="10" >   
           </a>
           <div class="container-fluid">
@@ -42,7 +42,7 @@ if(isset($_SESSION['id'])){
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 
-              <li class="nav-item dropdown">
+                <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Reservas
                   </a>
@@ -50,6 +50,7 @@ if(isset($_SESSION['id'])){
                     <li><a class="dropdown-item" href="reservas_lista.php">Reservas a la sala</a></li>
                   </ul>  
                 </li>
+
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Actividades
@@ -78,20 +79,15 @@ if(isset($_SESSION['id'])){
                   </ul> 
                 </li>
 
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Materiales
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="materiales.php">Administrar materiales</a></li>
-                  </ul>  
+                <li class="nav-item">
+                  <a class="nav-link" href="materiales.php">Materiales</a>
                 </li>
+              
                 <li class="nav-item">
                   <a class="nav-link" href="nosotros.php">Nosotros</a>
                 </li>
               </ul>
-
-              <!-- Nombre y apellido del usuario ingresado -->
+                <!-- Nombre y apellido del usuario ingresado -->
               <?php 
               $consulta = "SELECT * FROM usuarios WHERE cod_u = $id";
               $resultado = mysqli_query($conexion, $consulta);
@@ -102,7 +98,6 @@ if(isset($_SESSION['id'])){
               <nav>
                 <form class="container-fluid justify-content-start"><?php echo $nombre.' '.$apellido?></form>
               </nav>
-              </ul>
 
               <!-- Cerrar sesión -->
               <nav class="navbar navbar-light bg-light">

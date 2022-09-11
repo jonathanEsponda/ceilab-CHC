@@ -40,7 +40,7 @@
                 </a>  
                 </form>
               </nav>
-
+              <!-- Registro -->
               <nav class="navbar navbar-light bg-light">
                 <form class="container-fluid justify-content-start">
                 <a href="signup.vista.php"> 
@@ -53,11 +53,10 @@
           </div>
         </nav>
 
-<div class="container">
-<img src="images/panoramica2.jpg" class="d-block w-100 pt-5">
-    <!-- Mensajes -->
 
-    <!-- Sección carrusel -->
+<img src="images/panoramica2.jpg" class="d-block w-100 pt-5" id= "panoramica">
+
+<div class="container">
   <div id="carousel" class="carousel slide p-5" data-bs-ride="carousel" data-interval="100">
     <div class="carousel-inner">
       

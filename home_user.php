@@ -61,7 +61,7 @@ session_start();
                     Concursos Ceilab
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Inscripción a concursos</a></li>
+                    <li><a class="dropdown-item" href="con_inscribir.php">Inscripción a concursos</a></li>
                   </ul> 
                 </li>
 
