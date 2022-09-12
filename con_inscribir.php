@@ -2,18 +2,6 @@
 include("database/db.php");
 session_start();
  
-if(!isset($_SESSION['rol'])){
-   header('location: login.vista.php');
- }else{
-   if($_SESSION['rol'] != 2){
-       header('location: login.vista.php');
-   }
- }
-  
-if(isset($_SESSION['id'])){
-  $id = $_SESSION['id'];
-}   
-
 $mensajes = '';
 
 //Obtener el id de la competencia seleccionada
@@ -92,7 +80,14 @@ if (isset($_POST['con_inscribir'])){
   <body>
     <!-- Barra de navegación -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a href="#">
+          <!-- Direccionamiento de Icono principal -->
+        <?php if(!isset($_SESSION['id'])){ ?>  
+        <a href="index.php">
+          <?php } else if($_SESSION['rol'] == 1) {?>
+            <a href="home_admin.php">
+              <?php } else { ?>
+                <a href="home_user.php">
+                <?php } ?>
           <IMG SRC="images/logo.jpg" ALIGN=LEFT WIDTH=60 HEIGHT=35 HSPACE="10" VSPACE="10" >   
           </a>
           <div class="container-fluid">
@@ -102,6 +97,7 @@ if (isset($_POST['con_inscribir'])){
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <?php if(isset($_SESSION['id'])) { ?>
               <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Reservar sala
@@ -124,17 +120,20 @@ if (isset($_POST['con_inscribir'])){
                     Concursos Ceilab
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="con_rob_vista_usuario.php">Inscripción a concursos</a></li>
+                    <li><a class="dropdown-item" href="concursos.vista.php">Inscripción a concursos</a></li>
                   </ul> 
                 </li>
-
+                <?php } ?>
                 <li class="nav-item">
                   <a class="nav-link" href="nosotros.php">Nosotros</a>
                 </li>
               </ul>
 
               <!-- Nombre y apellido del usuario ingresado -->
-              <?php 
+              <?php  
+              if(isset($_SESSION['id'])){
+                $id = $_SESSION['id'];
+
               $consulta = "SELECT * FROM usuarios WHERE cod_u = $id";
               $resultado = mysqli_query($conexion, $consulta);
               $fila = mysqli_fetch_array($resultado);
@@ -154,7 +153,25 @@ if (isset($_POST['con_inscribir'])){
                 </a>  
                 </form>
               </nav>
-              
+              <?php } else {?>
+                <!-- Inicio de sesión -->
+              <nav class="navbar navbar-light bg-light">
+                <form class="container-fluid justify-content-start">
+                <a href="login.vista.php"> 
+                <button class="btn btn-outline-success me-2" type="button">Iniciar Sesion</button>
+                </a>  
+                </form>
+              </nav>
+
+              <!-- Registro -->
+              <nav class="navbar navbar-light bg-light">
+                <form class="container-fluid justify-content-start">
+                <a href="signup.vista.php"> 
+                <button class="btn btn-outline-primary me-2" type="button">Registrarse</button>
+                </a>  
+                </form>
+              </nav>
+              <?php }?>
               <span></span>
             </div>
           </div>

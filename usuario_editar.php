@@ -1,17 +1,16 @@
 <?php
     include("database/db.php");
+    
     session_start();
     if(!isset($_SESSION['rol'])){
-        header('location:login.php');
-    } else{
-        if($_SESSION['rol'] != 1){
-            header('location: login.php');
-        }
-    }
+        header('location:login.vista.php');
+    } 
     if(isset($_SESSION['id'])){
       $id = $_SESSION['id'];
     }   
-    
+  
+    $mensajes = '';
+
     if(isset($_GET['id'])) {
         $cod_u = $_GET['id'];
         $consulta = "SELECT * FROM usuarios WHERE cod_u = '$cod_u'";
@@ -40,11 +39,19 @@
 
         if (!$resultado) {
             die("Consulta Fallida");
+        } if($_SESSION['rol'] == 1){
+           echo'<script>
+                  alert("Usuario modificado correctamente");
+                  window.location="home_admin.php";
+                </script>';
+        }else {
+          echo'<script>
+                alert("Usuario modificado correctamente");
+                window.location="home_user.php";
+              </script>';
         }
-        $_SESSION['mensaje'] = 'Usuario modificado correctamente';
-        $_SESSION['tipo_mensaje'] = 'warning';
 
-        header("Location: usuarios_lista.php");
+        mysqli_close($conexion);
     }
 
 ?>
@@ -132,9 +139,16 @@
               $nombre = $fila['nombre_u'];
               $apellido = $fila['apellido_u'];
               ?>
-              <nav>
-                <form class="container-fluid justify-content-start"><?php echo $nombre.' '.$apellido?></form>
-              </nav>
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> 
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <?php echo $nombre.' '.$apellido?>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="usuario_editar.php?id=<?php echo $id?>">Editar usuario</a></li>
+                  </ul>
+                </li>
+              </ul>
 
               <!-- Cerrar sesión -->
               <nav class="navbar navbar-light bg-light">
@@ -176,6 +190,12 @@
                                 <label for="tel_u" class="text p-1">Teléfono: </label><br>
                                 <input type="int" name="tel_u" value="<?php echo $tel_u;?>" class="form-control" >
                             </div>
+                            <ul>
+                              <!-- Mensajes -->
+                              <?php if (!empty($mensajes)): ?>
+                              <?php echo $mensajes ?>
+                              <?php endif; ?>
+                            </ul>
                             <div class="form-group pt-2">
                                 <input type="submit" name="modificar" class="btn btn-success btn-md" value="Modificar">
                             </div>

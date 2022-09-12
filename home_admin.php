@@ -94,9 +94,17 @@ session_start();
               $nombre = $fila['nombre_u'];
               $apellido = $fila['apellido_u'];
               ?>
-              <nav>
-                <form class="container-fluid justify-content-start"><?php echo $nombre.' '.$apellido?></form>
-              </nav>
+             <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> 
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <?php echo $nombre.' '.$apellido?>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="usuario_editar.php?id=<?php echo $id?>">Editar usuario</a></li>
+                  </ul>
+                </li>
+              </ul>
+              
 
               <!-- Cerrar sesión -->
               <nav class="navbar navbar-light bg-light">
@@ -115,6 +123,13 @@ session_start();
         
         <img src="images/panoramica2.jpg" class="d-block w-100 pt-5" id="panoramica">
         <div class="container">
+        
+        <ul>
+          <!-- Mensajes -->
+          <?php if (!empty($mensajes)): ?>
+          <?php echo $mensajes ?>
+          <?php endif; ?>
+        </ul>
     <!-- Sección carrusel -->
     <div id="carousel" class="carousel slide p-5" data-bs-ride="carousel" data-interval="100">
     <div class="carousel-inner">
@@ -169,12 +184,12 @@ session_start();
       <div class="col">
         <a href="con_inscribir.php?id=<?php echo $fila['cod_con']?>">
           <div class="card h-100">
-            <img src="images/vespa.jpg" class="card-img-top" alt="vespa">
+            <img src="images/sumo.jpg" class="card-img-top">
             <div class="card-body">
               <h5 class="card-title">
-                <?php echo $fila['nom_con']; ?>
+                Nombre: <?php echo $fila['nom_con']; ?>
               </h5>
-              <p class="card-text"><?php echo $fila['fecha_con']?></p>
+              <p class="card-text">Fecha: <?php echo $fila['fecha_con']?></p>
             </div>
           </div>
         </a>

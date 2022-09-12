@@ -21,12 +21,13 @@ if (isset($_POST['registrar'])){
             $mensajes .= "<li class='mensajeVerde'>Usuario registrado correctamente</li>"; 
             require "login.vista.php";
         } else {
-            $mensajes .= "<li class='mensajeVerde'>El usuario no se registró</li>"; 
+            $mensajes .= "<li class='mensajeRojo'>El usuario no se registró</li>"; 
             require "signup.vista.php";
         }
         }
+        mysqli_close($conexion);
     } else {
-        $mensajes .= "<li class='mensajeVerde'>El usuario no se registró</li>"; 
+        $mensajes .= "<li class='mensajeRojo'>El usuario no se registró</li>"; 
             require "signup.vista.php";
     }
 ?>
