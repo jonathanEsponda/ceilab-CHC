@@ -89,10 +89,16 @@ if(!isset($_SESSION['rol'])){
               </ul>
 
               
-              <nav>
-                <form class="container-fluid justify-content-start"><?php echo $nombre_u.' '.$apellido_u?></form>
-              </nav>
-              </ul> 
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> 
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <?php echo $nombre.' '.$apellido?>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="usuario_editar.php?id=<?php echo $id?>">Editar usuario</a></li>
+                  </ul>
+                </li>
+              </ul>
 
               <!-- Cerrar sesión -->
               <nav class="navbar navbar-light bg-light">
@@ -112,6 +118,7 @@ if(!isset($_SESSION['rol'])){
             <div id="login-row" class="row justify-content-center align-items-center p-5">
                 <div id="login-column" class="col-md-6">
 <<<<<<< HEAD
+<<<<<<< HEAD
                   <ul>
 =======
                 
@@ -120,6 +127,9 @@ if(!isset($_SESSION['rol'])){
                     <?php echo $mensajes ?>
                     <?php endif; ?>
                   </ul>
+=======
+            
+>>>>>>> jona
                     <div id="login-box" class="col-md-12">
                         <form id="login-form" class="form" action="reservar.php?id=<?php echo $id;?>" method="post">
                             <h3 class="text-center text-success">Solicitud de uso de la sala</h3>

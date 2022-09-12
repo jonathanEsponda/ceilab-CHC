@@ -1,16 +1,18 @@
-<?php include ("database/db.php");
+<?php 
+include("database/db.php");
 session_start();
- if(!isset($_SESSION['rol'])){
+ 
+if(!isset($_SESSION['rol'])){
    header('location: login.vista.php');
  }else{
    if($_SESSION['rol'] != 2){
        header('location: login.vista.php');
    }
  }
-
- if(isset($_SESSION['id'])){
+  
+if(isset($_SESSION['id'])){
   $id = $_SESSION['id'];
-}
+}   
 ?>
 
 <!doctype html>
@@ -29,7 +31,7 @@ session_start();
   <body>
     <!-- Barra de navegación -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a href="#">
+          <a href="home_user.php">
           <IMG SRC="images/logo.jpg" ALIGN=LEFT WIDTH=60 HEIGHT=35 HSPACE="10" VSPACE="10" >   
           </a>
           <div class="container-fluid">
@@ -61,7 +63,7 @@ session_start();
                     Concursos Ceilab
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="concursos.vista.php">Inscripción a concursos</a></li>
+                    <li><a class="dropdown-item" href="con_rob_vista_usuario.php">Inscripción a concursos</a></li>
                   </ul> 
                 </li>
 
@@ -78,17 +80,9 @@ session_start();
               $nombre = $fila['nombre_u'];
               $apellido = $fila['apellido_u'];
               ?>
-              
-              <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> 
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <?php echo $nombre.' '.$apellido?>
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="usuario_editar.php?id=<?php echo $id?>">Editar usuario</a></li>
-                  </ul>
-                </li>
-              </ul>
+              <nav>
+                <form class="container-fluid justify-content-start"><?php echo $nombre.' '.$apellido?></form>
+              </nav>
               
                 
               <!-- Cerrar sesión -->
@@ -105,59 +99,8 @@ session_start();
           </div>
         </nav>
 
-<<<<<<< HEAD
 <div class="container">
-
-    <!-- Sección carrusel -->
-  <div id="carousel" class="carousel slide p-5" data-bs-ride="carousel" data-interval="100">
-
-<img src="images/panoramica2.jpg" class="d-block w-100 pt-5">
-=======
->>>>>>> jona
-
-<img src="images/panoramica2.jpg" class="d-block w-100 pt-5" id="panoramica">
-<div class="container">
-   <!-- Sección carrusel -->
-   <div id="carousel" class="carousel slide p-5" data-bs-ride="carousel" data-interval="100">
-    <div class="carousel-inner">
-      
-    <div class="carousel-item active">
-        <img src="images/sumo1.jpg" class="d-block w-100">
-      </div>
-      
-      <div class="carousel-item">
-        <img src="images/impresora.jpg" class="d-block w-100">
-      </div>
-      <div class="carousel-item">
-        <img src="images/muestra.jpg" class="d-block w-100">
-      </div>      
-      <div class="carousel-item">
-        <img src="images/herramientas.jpg" class="d-block w-100">
-      </div>
-      <div class="carousel-item">
-        <img src="images/sumo.jpg" class="d-block w-100">
-      </div>
-      <div class="carousel-item">
-        <img src="images/rack.jpg" class="d-block w-100">
-      </div>
-    </div> 
-  
-
-    <!-- Controles del carrusel-->
-    <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  
-  </div>
-
-
-
- <!-- Sección tarjetas de competencias -->
+        <!-- Sección tarjetas de competencias -->
  <h3 class="text-center text-success p-4">Concursos de robótica</h3>
   <div class="row row-cols-1 row-cols-md-3 g-4">
         <?php 
@@ -173,31 +116,18 @@ session_start();
       <div class="col">
         <a href="con_inscribir.php?id=<?php echo $fila['cod_con']?>">
           <div class="card h-100">
-            <img src="images/sumo.jpg" class="card-img-top">
+            <img src="images/sumo.jpg" class="card-img-top" alt="vespa">
             <div class="card-body">
               <h5 class="card-title">
-                Nombre: <?php echo $fila['nom_con']; ?>
+                <?php echo $fila['nom_con']; ?>
               </h5>
-              <p class="card-text">Fecha: <?php echo $fila['fecha_con']?></p>
+              <p class="card-text"><?php echo $fila['fecha_con']?></p>
             </div>
           </div>
         </a>
       </div>
         <?php } }?> 
   </div>
-  <div class="row">
-  <a href="reservar.vista.php?id=<?php echo $id?>">Reservar la sala CEILAB</a>
   </div>
 
-</div>
-
-<!-- Mantener sesión iniciada -->
-<script>
-  document.addEventListener("DOMContentLoaded", function(){
-  const milisegundos = 5 *1000;
-  setInterval(function(){
-      fetch("./refrescar.php");
-      },milisegundos);
-  });
-</script>
-<?php include("includes/footer.php")?>
+  <?php include("includes/footer.php")?>

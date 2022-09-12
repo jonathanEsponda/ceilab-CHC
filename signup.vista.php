@@ -93,6 +93,7 @@
                                 </div>
                             </div>
                             <ul>
+                              <!-- Mensajes -->
                               <?php if (!empty($mensajes)): ?>
                               <?php echo $mensajes ?>
                               <?php endif; ?>

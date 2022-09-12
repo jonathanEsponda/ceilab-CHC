@@ -95,9 +95,16 @@ if(isset($_SESSION['id'])){
               $nombre = $fila['nombre_u'];
               $apellido = $fila['apellido_u'];
               ?>
-              <nav>
-                <form class="container-fluid justify-content-start"><?php echo $nombre.' '.$apellido?></form>
-              </nav>
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> 
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <?php echo $nombre.' '.$apellido?>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="usuario_editar.php?id=<?php echo $id?>">Editar usuario</a></li>
+                  </ul>
+                </li>
+              </ul>
 
               <!-- Cerrar sesión -->
               <nav class="navbar navbar-light bg-light">
@@ -115,12 +122,7 @@ if(isset($_SESSION['id'])){
 
 <div class="container p-4">
     <div class="row">
-    <?php  if(isset($_SESSION['mensaje'])){?>
-            <div class="alert alert-<?=$_SESSION['tipo_mensaje'];?> alert-dismissible fade show" role="alert">
-                <?= $_SESSION['mensaje'] ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            <?php }?>
+    
             <h3 class="text-center text-success">Lista de reservas a la sala</h3>
     <table class="table table-bordered">
                     <thead>
