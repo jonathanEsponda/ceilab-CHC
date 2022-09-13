@@ -45,7 +45,9 @@ session_start();
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="reservar.vista.php">Reservar la sala Ceilab</a></li>
-                  </ul>  
+                    <li><a class="dropdown-item" href="reservas_usuario.php">Mis reservas</a></li>
+                  </ul>
+                  
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

@@ -17,36 +17,29 @@ if(isset($_GET['id'])) {
     $cod_area = $_POST['cod_area'];
     $grupo_res = $_POST['grupo_res'];
     $propuesta_res = $_POST['propuesta_res'];
+      
     
-    //Pendiente validar reserva 
-    $consulta = "SELECT * FROM reservas WHERE fecha_res = '$fecha_res'";
-    $resultado = mysqli_query($conexion, $consulta);
-    $filas = mysqli_num_rows($resultado);
-    
-    if($filas >= 1){
-    while($rows = mysqli_fetch_array($resultado)){
-      echo $rows['hora_ini_res'];
-      echo $rows['hora_fin_res'];
-    }
-
-    
-    } else {
-      $consulta2 = "INSERT INTO reservas(fecha_res, hora_ini_res, hora_fin_res, grupo_res, propuesta_res, cod_u, cod_area) 
-      VALUES ('$fecha_res','$hora_ini_res','$hora_fin_res','$grupo_res','$propuesta_res','$id','$cod_area')";
-      $resultado2 = mysqli_query($conexion, $consulta2);
-     
-      if($resultado2 == true) {
-      $mensajes .= "<li class='mensajeVerde'>La reserva fue realizada correctamente</li>";
-      header("location: reservar.vista.php");    
+      $consulta = "INSERT INTO reservas(fecha_res, hora_ini_res, hora_fin_res, grupo_res, propuesta_res, cod_u, cod_area,validacion) 
+      VALUES ('$fecha_res','$hora_ini_res','$hora_fin_res','$grupo_res','$propuesta_res','$id','$cod_area',0)";
+      $resultado = mysqli_query($conexion, $consulta);
+      
+      if($resultado) {
+        echo'<script>
+        alert("Solicitud de reserva realizada correctamente");
+        window.location="home_user.php";
+      </script>';  
+  } else {
+    echo'<script>
+        alert("No se pudo realizar la solicitud");
+        window.location="home_user.php";
+      </script>';  
   }
-  }   
-}
-  
-  
-  
-  
-  $mensajes .= "<li class='mensajeVerde'>Concursante registrado correctamente</li>"; 
 
+
+
+  }   
+
+  
 ?>
 
 

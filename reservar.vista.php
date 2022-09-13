@@ -4,10 +4,6 @@ include("database/db.php");
 session_start();
 if(!isset($_SESSION['rol'])){
     header('location: login.vista.php');
-  }else{
-    if($_SESSION['rol'] != 2){
-        header('location: login.vista.php');
-    }
   }
 
   if(isset(($_SESSION['id']))){
@@ -92,7 +88,7 @@ if(!isset($_SESSION['rol'])){
               <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> 
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <?php echo $nombre.' '.$apellido?>
+                <?php echo $nombre_u.' '.$apellido_u?>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="usuario_editar.php?id=<?php echo $id?>">Editar usuario</a></li>
@@ -202,3 +198,4 @@ if(!isset($_SESSION['rol'])){
                 </div>
             </div>
         </div> 
+        <?php include("includes/footer.php"); ?>
