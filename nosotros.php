@@ -42,7 +42,7 @@ session_start();
               
               
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <?php if(isset($_SESSION['id'])) { ?>
+              <?php if($_SESSION['rol']==1) { ?>
               <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Reservas
@@ -52,6 +52,15 @@ session_start();
                   </ul>  
                 </li>
 
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Actividades
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="actividades_lista.php">Actividades realizadas</a></li>
+                  </ul>  
+                </li>
+                
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Usuarios
@@ -73,6 +82,33 @@ session_start();
 
                 <li class="nav-item">
                   <a class="nav-link" href="materiales.php">Materiales</a>
+                </li>
+                <?php } else if ($_SESSION['rol'] == 2) { ?>
+
+                  <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Reservar sala
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="reservar.vista.php">Reservar la sala Ceilab</a></li>
+                  </ul>  
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Actividades
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="actividades_vista.php">Actividades realizadas en la sala</a></li>
+                  </ul>  
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Concursos Ceilab
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="concursos.vista.php">Inscripción a concursos</a></li>
+                  </ul> 
                 </li>
                 <?php } ?>
                 <li class="nav-item">
