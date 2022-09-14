@@ -61,15 +61,6 @@ session_start();
 
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Actividades
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="actividades_lista.php">Actividades realizadas</a></li>
-                  </ul>  
-                </li>
-
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Usuarios
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -121,19 +112,6 @@ session_start();
                   </ul>
                 </li>
               </ul>
-              
-
-              <!-- Nombre y apellido del usuario ingresado -->
-              <?php 
-              $consulta = "SELECT * FROM usuarios WHERE cod_u = $id";
-              $resultado = mysqli_query($conexion, $consulta);
-              $fila = mysqli_fetch_array($resultado);
-              $nombre = $fila['nombre_u'];
-              $apellido = $fila['apellido_u'];
-              ?>
-              <nav>
-                <form class="container-fluid justify-content-start"><?php echo $nombre.' '.$apellido?></form>
-              </nav>
               <!-- Cerrar sesión -->
               <nav class="navbar navbar-light bg-light">
                 <form class="container-fluid justify-content-start">
@@ -151,20 +129,11 @@ session_start();
         
         <img src="images/panoramica2.jpg" class="d-block w-100 pt-5" id="panoramica">
         <div class="container">
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 <img src="images/panoramica2.jpg" class="d-block w-100 pt-5">
-=======
->>>>>>> jona
-=======
-        
-        <ul>
-          <!-- Mensajes -->
-          <?php if (!empty($mensajes)): ?>
-          <?php echo $mensajes ?>
-          <?php endif; ?>
-        </ul>
->>>>>>> jona
+
+
+
     <!-- Sección carrusel -->
     <div id="carousel" class="carousel slide p-5" data-bs-ride="carousel" data-interval="100">
     <div class="carousel-inner">
