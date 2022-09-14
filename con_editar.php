@@ -166,7 +166,7 @@
                         </div>
                         <br>
                         <div class="form group">
-                            <input name="fecha_con" type="date" class="form-control" rows="2" value= "<?php echo $fecha_con;?>">
+                            <input name="fecha_con" type="date" class="form-control" rows="2" value= "<?php echo $fecha_con; mysqli_close($conexion);?>">
                                
                             </input>
                         </div>

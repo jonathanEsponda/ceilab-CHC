@@ -15,7 +15,7 @@
                   window.location="usuarios_lista.php";
                   </script>';
         }   
-   
+        mysqli_close($conexion);
      }
 
 ?>

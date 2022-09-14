@@ -18,6 +18,7 @@ if (isset($_POST['materiales_guardar'])){
     $mensajes .= "<li class='mensajeVerde'>Material ingresado correctamente</li>"; 
 
     require "materiales.php";
+    mysqli_close($conexion);
 }
 
 

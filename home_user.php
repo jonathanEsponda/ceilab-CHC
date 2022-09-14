@@ -173,12 +173,10 @@ session_start();
           </div>
         </a>
       </div>
-        <?php } }
-        mysqli_close($conexion);
-        ?> 
+        <?php } } ?> 
   </div>
   <div class="row">
-  <a href="reservar.vista.php?id=<?php echo $id?>">Reservar la sala CEILAB</a>
+  <a href="reservar.vista.php?id=<?php echo $id; mysqli_close($conexion);?>">Reservar la sala CEILAB</a>
   </div>
 
 </div>

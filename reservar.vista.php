@@ -134,7 +134,7 @@ if(!isset($_SESSION['rol'])){
                             </div>
                             <div class="form-group pt-2">
                                 <label for="email_u" class="text p-1">Correo electrónico: </label><br>
-                                <input type="email" name="email_u" value="<?php echo $email_u?>" class="form-control" >
+                                <input type="email" name="email_u" value="<?php echo $email_u; mysqli_close($conexion);?>" class="form-control" >
                             </div>
                             <div class="form-group pt-2">
                                 <label for="fecha_res" class="text p-1">Fecha solicitada: </label><br>

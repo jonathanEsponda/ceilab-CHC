@@ -147,7 +147,7 @@ if(isset($_SESSION['id'])){
                                 <td><?php echo $fila['nom_robot']?></td>
                                 
                             </tr>
-                        <?php } ?>
+                        <?php } mysqli_close($conexion); ?>
                     </tbody>
                 </table>
     </div>

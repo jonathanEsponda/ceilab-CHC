@@ -1,14 +1,5 @@
 <?php
 
-// function conexion($bd_config){
-//   try {
-//     $conexion = new PDO('mysql:host=localhost;dbname='.$bd_config['db_name'],$bd_config['user'],$bd_config['pass']);
-//     return $conexion;
-//   } catch (PDOException $e) {
-//     return false;
-//   }
-// }
-
 function limpiarDatos($datos){
   $datos = htmlspecialchars($datos);
   $datos = trim($datos);
@@ -16,19 +7,5 @@ function limpiarDatos($datos){
 
   return $datos;
 }
-
-// function iniciarSession($table, $conexion){
-//   $statement = $conexion->prepare("SELECT * FROM $table WHERE 'ced_u' = :ced_u");
-//   $statement->execute([
-//     ':ced_u' => $_SESSION['usuario']
-//   ]);
-//   return $statement->fetch(PDO::FETCH_ASSOC);
-// }
-
-
-
-
-
-
 
  ?>

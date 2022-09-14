@@ -15,7 +15,7 @@
         $mensajes .= "<li class='mensajeRojo'>Material eliminado correctamente</li>"; 
         
         require "materiales.php";
-   
+        mysqli_close($conexion);
      }
 
 ?>

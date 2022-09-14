@@ -191,7 +191,7 @@ if (isset($_POST['con_inscribir'])){
             <h3 class="text-center text-success">Inscripción a concurso: <?php echo $nom_con;?></h3>
             <br>
                 <div class="card card-body ">
-                    <form action="con_inscribir.php?id=<?php echo $_GET['id']; ?>" method="POST">
+                    <form action="con_inscribir.php?id=<?php echo $_GET['id']; mysqli_close($conexion); ?>" method="POST">
                         <div class="form group">
                             <input type="text" name="nom_institucion" 
                              class="form-control p-2" placeholder="Nombre de la institución">

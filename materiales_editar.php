@@ -159,7 +159,7 @@
                         </div>
                         <br>
                         <div class="form group">
-                            <input type="int" name="cantidad" value="<?php echo $cantidad; ?>"
+                            <input type="int" name="cantidad" value="<?php echo $cantidad; mysqli_close($conexion);?>"
                              class="form-control p-2" placeholder="Modificar cantidad">
                         </div>
                         <br>

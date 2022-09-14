@@ -144,7 +144,7 @@ if(isset($_SESSION['id'])){
                                 <td><?php echo $fila['hora_ini_res']?></td>
                                 <td><?php echo $fila['hora_fin_res']?></td> 
                             </tr>
-                        <?php } ?>
+                        <?php } mysqli_close($conexion);?>
                     </tbody>
                 </table>
     </div>

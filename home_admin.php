@@ -193,7 +193,7 @@ session_start();
           </div>
         </a>
       </div>
-        <?php } }?> 
+        <?php }mysqli_close($conexion);}?> 
   </div>
 
 </div>

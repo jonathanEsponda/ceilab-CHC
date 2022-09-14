@@ -12,9 +12,6 @@ if (isset($_POST['con_rob_guardar'])){
     if($fecha_con < $fecha_actual) { 
         $mensajes .= "<li class='mensajeRojo'>Seleccionar fecha mayor a la de hoy</li>"; 
         require "con_rob.php";
-        // $_SESSION['mensaje'] = 'La fecha debe ser mayor a la de hoy';
-        // $_SESSION['tipo_mensaje'] = 'danger';
-        // header("Location: con_rob.php");
         
     } else {
     $consulta = "INSERT INTO concursos_rob(nom_con, fecha_con, cod_u) VALUES ('$nom_con', '$fecha_con', null)";
@@ -28,6 +25,7 @@ if (isset($_POST['con_rob_guardar'])){
 
     require "con_rob.php";
 }
+mysqli_close($conexion);
 }
 
 ?>

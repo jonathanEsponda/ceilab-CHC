@@ -126,7 +126,7 @@ if(isset($_SESSION['id'])){
           </div>
         </a>
       </div>
-        <?php } }?> 
+        <?php } } mysqli_close($conexion); ?> 
   </div>
   </div>
 

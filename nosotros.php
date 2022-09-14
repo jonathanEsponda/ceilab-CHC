@@ -42,7 +42,7 @@ session_start();
               
               
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <?php if($_SESSION['rol']==1) { ?>
+              <?php if(isset($_SESSION['rol']) && $_SESSION['rol']==1) { ?>
               <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Reservas
@@ -83,7 +83,7 @@ session_start();
                 <li class="nav-item">
                   <a class="nav-link" href="materiales.php">Materiales</a>
                 </li>
-                <?php } else if ($_SESSION['rol'] == 2) { ?>
+                <?php } else if (isset($_SESSION['rol']) && $_SESSION['rol']==1) { ?>
 
                   <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -167,7 +167,7 @@ session_start();
                 </a>  
                 </form>
               </nav>
-              <?php }?>
+              <?php mysqli_close($conexion);}?>
               <span></span>
               
             </div>

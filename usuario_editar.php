@@ -50,8 +50,6 @@
                 window.location="home_user.php";
               </script>';
         }
-
-        mysqli_close($conexion);
     }
 
 ?>
@@ -188,7 +186,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="tel_u" class="text p-1">Teléfono: </label><br>
-                                <input type="int" name="tel_u" value="<?php echo $tel_u;?>" class="form-control" >
+                                <input type="int" name="tel_u" value="<?php echo $tel_u; mysqli_close($conexion);?>" class="form-control" >
                             </div>
                             <ul>
                               <!-- Mensajes -->

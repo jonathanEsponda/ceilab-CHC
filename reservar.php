@@ -5,8 +5,6 @@ include("database/db.php");
      $id = $_GET['id'];
  }
 
-$mensajes = '';
-
  if (isset($_POST['reservar'])){
     $nombre_u = $_POST['nombre_u'];
     $apellido_u = $_POST['apellido_u'];
@@ -39,7 +37,7 @@ $mensajes = '';
   }
 
 
-
+  mysqli_close($conexion);
   }   
 
   

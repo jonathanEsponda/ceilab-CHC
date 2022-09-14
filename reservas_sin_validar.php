@@ -164,7 +164,7 @@ if(isset($_SESSION['id'])){
                                     </a>
                                 </td>
                             </tr>
-                        <?php } ?>
+                        <?php } mysqli_close($conexion); ?>
                     </tbody>
                 </table>
     </div>

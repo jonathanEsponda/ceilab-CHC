@@ -16,6 +16,6 @@
         
         require "con_rob.php";
    
-     }
+        mysqli_close($conexion); }
 
 ?>
