@@ -89,10 +89,6 @@ session_start();
                 <li class="nav-item">
                   <a class="nav-link" href="nosotros.php">Nosotros</a>
                 </li>
-              
-                <li class="nav-item">
-                  <a class="nav-link" href="nosotros.php">Nosotros</a>
-                </li>
               </ul>
                 <!-- Nombre y apellido del usuario ingresado -->
               <?php 
@@ -128,11 +124,8 @@ session_start();
 
         
         <img src="images/panoramica2.jpg" class="d-block w-100 pt-5" id="panoramica">
-        <div class="container">
-
-<img src="images/panoramica2.jpg" class="d-block w-100 pt-5">
-
-
+        
+  <div class="container">
 
     <!-- Sección carrusel -->
     <div id="carousel" class="carousel slide p-5" data-bs-ride="carousel" data-interval="100">
@@ -188,11 +181,8 @@ session_start();
       <div class="col">
         <a href="con_inscribir.php?id=<?php echo $fila['cod_con']?>">
           <div class="card h-100">
-<<<<<<< HEAD
-            <img src="images/sumo.jpg" class="card-img-top" alt="vespa">
-=======
+          
             <img src="images/sumo.jpg" class="card-img-top">
->>>>>>> jona
             <div class="card-body">
               <h5 class="card-title">
                 Nombre: <?php echo $fila['nom_con']; ?>
@@ -204,7 +194,6 @@ session_start();
       </div>
         <?php } }?> 
   </div>
-  
 
 </div>
 
