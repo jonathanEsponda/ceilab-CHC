@@ -188,12 +188,7 @@
                                 <label for="tel_u" class="text p-1">Teléfono: </label><br>
                                 <input type="int" name="tel_u" value="<?php echo $tel_u; mysqli_close($conexion);?>" class="form-control" >
                             </div>
-                            <ul>
-                              <!-- Mensajes -->
-                              <?php if (!empty($mensajes)): ?>
-                              <?php echo $mensajes ?>
-                              <?php endif; ?>
-                            </ul>
+        
                             <div class="form-group pt-2">
                                 <input type="submit" name="modificar" class="btn btn-success btn-md" value="Modificar">
                             </div>

@@ -12,9 +12,10 @@
         if (!$resultado) {
             die("Consulta Fallida");
         }
-        $mensajes .= "<li class='mensajeRojo'>Competencia eliminada correctamente</li>"; 
-        
-        require "con_rob.php";
+        echo'<script>
+                  alert("El concurso fue borrado correctamente");
+                  window.location="con_rob.php";
+                  </script>';
    
         mysqli_close($conexion); }
 

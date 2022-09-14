@@ -11,10 +11,10 @@
         if (!$resultado) {
             die("Consulta Fallida");
         }
-
-        $mensajes .= "<li class='mensajeRojo'>Material eliminado correctamente</li>"; 
-        
-        require "materiales.php";
+        echo'<script>
+                  alert("Material eliminado correctamente");
+                  window.location="materiales.php";
+                  </script>';
         mysqli_close($conexion);
      }
 

@@ -29,11 +29,10 @@ if($filas == true){
   echo "error al ingresar";
  }
 } else {
-    
-    $mensajes .= "<li class='mensajeRojo'>La cédula o contraseña ingresadas son incorrectas</li>"; 
-
-    require "login.vista.php";
-    
+    echo'<script>
+                  alert("La cédula o contraseña ingresadas son incorrectas");
+                  window.location="login.vista.php";
+                  </script>';
 }
  mysqli_free_result($datos);
  mysqli_close($conexion);

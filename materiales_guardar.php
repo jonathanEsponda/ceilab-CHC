@@ -14,10 +14,10 @@ if (isset($_POST['materiales_guardar'])){
     if (!$resultado) {
         die("Consulta fallida");
     }
-
-    $mensajes .= "<li class='mensajeVerde'>Material ingresado correctamente</li>"; 
-
-    require "materiales.php";
+    echo'<script>
+                  alert("Material ingresado correctamente");
+                  window.location="materiales.php";
+                  </script>';
     mysqli_close($conexion);
 }
 

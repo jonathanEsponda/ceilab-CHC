@@ -45,12 +45,7 @@
                                 <input type="password" name="clave_u" id="clave_u" class="form-control" required>
                             </div>
                             <br>
-                            <!-- Mensajes -->
-                            <ul>
-                              <?php if (!empty($mensajes)): ?>
-                              <?php echo $mensajes ?>
-                              <?php endif; ?>
-                            </ul> 
+                
                             <div class="form-group pt-2">
                                 <input type="submit" name="ingresar" class="btn btn-info btn-md" value="Ingresar">
                             </div>

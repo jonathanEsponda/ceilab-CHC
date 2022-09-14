@@ -10,9 +10,10 @@ if (isset($_POST['con_rob_guardar'])){
 
     // Validacioón de fecha > hoy
     if($fecha_con < $fecha_actual) { 
-        $mensajes .= "<li class='mensajeRojo'>Seleccionar fecha mayor a la de hoy</li>"; 
-        require "con_rob.php";
-        
+        echo'<script>
+            alert("La fecha debe ser mayor a la de hoy");
+            window.location="con_rob.php";
+            </script>';    
     } else {
     $consulta = "INSERT INTO concursos_rob(nom_con, fecha_con, cod_u) VALUES ('$nom_con', '$fecha_con', null)";
     $resultado = mysqli_query($conexion, $consulta);
@@ -21,9 +22,10 @@ if (isset($_POST['con_rob_guardar'])){
         die("Consulta fallida");
         
     }
-    $mensajes .= "<li class='mensajeVerde'>Competencia guardada correctamente</li>"; 
-
-    require "con_rob.php";
+    echo'<script>
+        alert("Competencia guardada correctamente");
+        window.location="con_rob.php";
+        </script>';
 }
 mysqli_close($conexion);
 }

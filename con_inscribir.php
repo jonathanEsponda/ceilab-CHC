@@ -2,8 +2,6 @@
 include("database/db.php");
 session_start();
  
-$mensajes = '';
-
 //Obtener el id de la competencia seleccionada
 if(isset($_GET['id'])) {
     $cod_con = $_GET['id'];

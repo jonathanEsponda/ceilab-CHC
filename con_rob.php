@@ -116,12 +116,6 @@ if(isset($_SESSION['id'])){
 <div class="container p-4">
     <div class="row">
         <div class="col-md-4">
-            <!-- Mensajes -->
-            <ul>
-                <?php if (!empty($mensajes)): ?>
-                <?php echo $mensajes ?>
-                <?php endif; ?>
-            </ul>
 
             <!-- Formulario -->
             <div class="card card-body">

@@ -12,6 +12,7 @@
       $id = $_SESSION['id'];
     } 
     
+    //Se obtiene el cod_con, llega a través del botón
     if(isset($_GET['id'])) {
         $cod_con = $_GET['id'];
         $consulta = "SELECT * FROM concursos_rob WHERE cod_con = '$cod_con'";
@@ -29,10 +30,12 @@
         $fecha_con = $_POST['fecha_con'];
         $fecha_actual = date('Y-m-d', time());
 
+        //Validación de que la fecha no sea menor a la actual
         if($fecha_con < $fecha_actual) { 
-            $_SESSION['mensaje'] = 'La fecha debe ser mayor a la de hoy';
-            $_SESSION['tipo_mensaje'] = 'danger';
-            header("Location: con_rob.php");
+          echo'<script>
+                  alert("La fecha debe ser mayor a la de hoy");
+                  window.location="con_rob.php";
+                  </script>';
             
         } else {
 
@@ -42,10 +45,10 @@
         if (!$resultado) {
             die("Consulta Fallida");
         }
-        $_SESSION['mensaje'] = 'Competencia actualizada correctamente';
-        $_SESSION['tipo_mensaje'] = 'warning';
-
-        header("Location: con_rob.php");
+        echo'<script>
+        alert("Competencia actualizada correctamente");
+        window.location="con_rob.php.php";
+        </script>';
     }
     }
 ?>
