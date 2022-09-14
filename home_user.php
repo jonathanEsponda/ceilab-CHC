@@ -54,7 +54,8 @@ session_start();
                     Actividades
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="actividades_vista.php">Actividades realizadas en la sala</a></li>
+                    <li><a class="dropdown-item" href="actividades.vista.php">Actividades realizadas</a></li>
+                    <li><a class="dropdown-item" href="actividades_registrar.php">Registrar actividad</a></li>
                   </ul>  
                 </li>
 
@@ -92,7 +93,6 @@ session_start();
                 </li>
               </ul>
               
-                
               <!-- Cerrar sesión -->
               <nav class="navbar navbar-light bg-light">
                 <form class="container-fluid justify-content-start">
@@ -109,6 +109,7 @@ session_start();
 
 <img src="images/panoramica2.jpg" class="d-block w-100 pt-5" id="panoramica">
 <div class="container">
+  <div class="row p-5">
    <!-- Sección carrusel -->
    <div id="carousel" class="carousel slide p-5" data-bs-ride="carousel" data-interval="100">
     <div class="carousel-inner">
@@ -146,6 +147,7 @@ session_start();
     </button>
   
   </div>
+  </div>
 
  <!-- Sección tarjetas de competencias -->
  <h3 class="text-center text-success p-4">Concursos de robótica</h3>
@@ -175,6 +177,7 @@ session_start();
       </div>
         <?php } } ?> 
   </div>
+
   <div class="row">
   <a href="reservar.vista.php?id=<?php echo $id; mysqli_close($conexion);?>">Reservar la sala CEILAB</a>
   </div>

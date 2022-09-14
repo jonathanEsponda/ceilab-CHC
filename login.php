@@ -6,7 +6,6 @@ $ced_u = $_POST['ced_u'];
 $clave_u = $_POST['clave_u'];
 session_start();
 
-$mensajes = '';
 //consulta
  $consulta = "SELECT * FROM usuarios WHERE ced_u = '$ced_u' AND clave_u = ' $clave_u' ";
  $datos =mysqli_query($conexion, $consulta);

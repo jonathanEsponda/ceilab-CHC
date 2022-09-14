@@ -57,6 +57,7 @@
 <img src="images/panoramica2.jpg" class="d-block w-100 pt-5" id= "panoramica">
 
 <div class="container">
+  <div class="row p-5">
   <div id="carousel" class="carousel slide p-5" data-bs-ride="carousel" data-interval="100">
     <div class="carousel-inner">
       
@@ -95,7 +96,7 @@
     
 
   </div>
-
+  </div>
 
 
  <!-- Sección tarjetas de competencias -->

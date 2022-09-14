@@ -1,27 +1,16 @@
-<?php 
-include("database/db.php");
-
+<?php include ("database/db.php");
 session_start();
-if(!isset($_SESSION['rol'])){
-    header('location: login.vista.php');
-  }
-
-  if(isset(($_SESSION['id']))){
-    $id = $_SESSION['id'];
-
-    $consulta = "SELECT * FROM usuarios WHERE cod_u = '$id'";
-    $datos =mysqli_query($conexion, $consulta);
-    
-    $filas = mysqli_fetch_array($datos);
-
-       if($filas == true){
-         $nombre_u = $filas['nombre_u'];
-         $apellido_u = $filas['apellido_u'];
-         $ced_u = $filas['ced_u'];
-         $email_u = $filas['email_u'];
-         $tel_u = $filas['tel_u'];
-    }
+ if(!isset($_SESSION['rol'])){
+   header('location: login.vista.php');
+ }else{
+   if($_SESSION['rol'] != 2){
+       header('location: login.vista.php');
    }
+ }
+
+ if(isset($_SESSION['id'])){
+  $id = $_SESSION['id'];
+}
 ?>
 
 <!doctype html>
@@ -40,7 +29,7 @@ if(!isset($_SESSION['rol'])){
   <body>
     <!-- Barra de navegación -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a href="home_user.php">
+          <a href="#">
           <IMG SRC="images/logo.jpg" ALIGN=LEFT WIDTH=60 HEIGHT=35 HSPACE="10" VSPACE="10" >   
           </a>
           <div class="container-fluid">
@@ -50,21 +39,22 @@ if(!isset($_SESSION['rol'])){
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                
               <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Reservar sala
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="reservar.vista.php">Reservar la sala Ceilab</a></li>
-                  </ul>  
+                    <li><a class="dropdown-item" href="reservas_usuario.php">Mis reservas</a></li>
+                  </ul>
+                  
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Actividades
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Actividades realizadas en la sala</a></li>
+                    <li><a class="dropdown-item" href="actividades.vista.php">Actividades realizadas en la sala</a></li>
                   </ul>  
                 </li>
 
@@ -73,7 +63,7 @@ if(!isset($_SESSION['rol'])){
                     Concursos Ceilab
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="con_rob_vista_usuario.php">Inscripción a concursos</a></li>
+                    <li><a class="dropdown-item" href="concursos.vista.php">Inscripción a concursos</a></li>
                   </ul> 
                 </li>
 
@@ -82,18 +72,26 @@ if(!isset($_SESSION['rol'])){
                 </li>
               </ul>
 
+              <!-- Nombre y apellido del usuario ingresado -->
+              <?php 
+              $consulta = "SELECT * FROM usuarios WHERE cod_u = $id";
+              $resultado = mysqli_query($conexion, $consulta);
+              $fila = mysqli_fetch_array($resultado);
+              $nombre = $fila['nombre_u'];
+              $apellido = $fila['apellido_u'];
+              ?>
               
               <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> 
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <?php echo $nombre_u.' '.$apellido_u?>
+                <?php echo $nombre.' '.$apellido?>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="usuario_editar.php?id=<?php echo $id?>">Editar usuario</a></li>
                   </ul>
                 </li>
               </ul>
-
+              
               <!-- Cerrar sesión -->
               <nav class="navbar navbar-light bg-light">
                 <form class="container-fluid justify-content-start">
@@ -108,19 +106,19 @@ if(!isset($_SESSION['rol'])){
           </div>
         </nav>
 
- <div class="container">
-            <div id="login-row" class="row justify-content-center align-items-center p-5">
+        <div class="container">
+        <div id="login-row" class="row justify-content-center align-items-center p-5">
                 <div id="login-column" class="col-md-6">
                     <div id="login-box" class="col-md-12">
                         <form id="login-form" class="form" action="reservar.php?id=<?php echo $id;?>" method="post">
-                            <h3 class="text-center text-success">Solicitud de uso de la sala</h3>
+                            <h3 class="text-center text-success">Registrar actividad</h3>
                             <div class="form-group">
-                                <label for="nombre_u" class="text p-1">Nombre: </label><br>
-                                <input type="text" name="nombre_u" value="<?php echo $nombre_u?>" class="form-control" >
+                                <label for="desc_act" class="text p-1">Descripción: </label><br>
+                                <input type="text" name="desc_act" class="form-control" >
                             </div>
                             <div class="form-group pt-2">
-                                <label for="apellido_u" class="text p-1">Apellido: </label><br>
-                                <input type="text" name="apellido_u" value="<?php echo $apellido_u?>" class="form-control" >
+                                <label for="foto_act" class="text p-1">Imagen de la actividad </label><br>
+                                <input type="file" name="foto_act" class="form-control" >
                             </div>
                             <div class="form-group pt-2">
                                 <label for="ced_u" class="text p-1">Cédula de identidad: </label><br>
@@ -194,5 +192,4 @@ if(!isset($_SESSION['rol'])){
                     </div>
                 </div>
             </div>
-        </div> 
-        <?php include("includes/footer.php"); ?>
+        </div>

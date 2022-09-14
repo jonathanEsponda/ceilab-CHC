@@ -38,8 +38,10 @@
         if (!$resultado) {
             die("Consulta Fallida");
         }
-
-        header("Location: materiales.php");
+        echo'<script>
+        alert("Material editado correctamente");
+        window.location="materiales.php";
+        </script>';
     }
     
 ?>

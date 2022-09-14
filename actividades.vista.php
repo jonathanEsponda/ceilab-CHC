@@ -1,17 +1,16 @@
-<?php include('database/db.php');
+<?php include ("database/db.php");
 session_start();
+ if(!isset($_SESSION['rol'])){
+   header('location: login.vista.php');
+ }else{
+   if($_SESSION['rol'] != 2){
+       header('location: login.vista.php');
+   }
+ }
 
-  if(!isset($_SESSION['rol'])){
-          header('location: login.vista.php');
-      }else{
-          if($_SESSION['rol'] != 1){
-              header('location: login.vista.php');
-          }
-      }
-
-  if(isset($_SESSION['id'])){
-    $id = $_SESSION['id'];
-  }   
+ if(isset($_SESSION['id'])){
+  $id = $_SESSION['id'];
+}
 ?>
 
 <!doctype html>
@@ -40,32 +39,22 @@ session_start();
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                
-                <li class="nav-item dropdown">
+              <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Reservas
+                    Reservar sala
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="reservas_sin_validar.php">Solicitudes sin validar</a></li>
-                    <li><a class="dropdown-item" href="reservas_lista.php">Lista de reservas</a></li>
-                  </ul>  
+                    <li><a class="dropdown-item" href="reservar.vista.php">Reservar la sala Ceilab</a></li>
+                    <li><a class="dropdown-item" href="reservas_usuario.php">Mis reservas</a></li>
+                  </ul>
+                  
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Actividades
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="actividades_lista.php">Actividades realizadas</a></li>
-                  </ul>  
-                </li>
-
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Usuarios
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="usuarios_lista.php">Usuarios registrados</a></li>
+                    <li><a class="dropdown-item" href="actividades.vista.php">Actividades realizadas en la sala</a></li>
                   </ul>  
                 </li>
 
@@ -74,24 +63,16 @@ session_start();
                     Concursos Ceilab
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="con_rob.php">Administrar concursos</a></li>
-                    <li><a class="dropdown-item" href="con_inscriptos.php">Inscriptos</a></li>
+                    <li><a class="dropdown-item" href="concursos.vista.php">Inscripción a concursos</a></li>
                   </ul> 
                 </li>
 
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Materiales
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="materiales.php">Administrar materiales</a></li>
-                  </ul>  
-                </li>
                 <li class="nav-item">
                   <a class="nav-link" href="nosotros.php">Nosotros</a>
                 </li>
               </ul>
-                <!-- Nombre y apellido del usuario ingresado -->
+
+              <!-- Nombre y apellido del usuario ingresado -->
               <?php 
               $consulta = "SELECT * FROM usuarios WHERE cod_u = $id";
               $resultado = mysqli_query($conexion, $consulta);
@@ -99,7 +80,8 @@ session_start();
               $nombre = $fila['nombre_u'];
               $apellido = $fila['apellido_u'];
               ?>
-             <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> 
+              
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> 
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <?php echo $nombre.' '.$apellido?>
@@ -109,6 +91,7 @@ session_start();
                   </ul>
                 </li>
               </ul>
+              
               <!-- Cerrar sesión -->
               <nav class="navbar navbar-light bg-light">
                 <form class="container-fluid justify-content-start">
@@ -123,81 +106,32 @@ session_start();
           </div>
         </nav>
 
-        
-        <img src="images/panoramica2.jpg" class="d-block w-100 pt-5" id="panoramica">
-        
-  <div class="container">
-    <div class="row p-5">
-    <!-- Sección carrusel -->
-    <div id="carousel" class="carousel slide p-5" data-bs-ride="carousel" data-interval="100">
-    <div class="carousel-inner">
-      
-    <div class="carousel-item active">
-        <img src="images/sumo1.jpg" class="d-block w-100">
-      </div>
-      
-      <div class="carousel-item">
-        <img src="images/impresora.jpg" class="d-block w-100">
-      </div>
-      <div class="carousel-item">
-        <img src="images/muestra.jpg" class="d-block w-100">
-      </div>      
-      <div class="carousel-item">
-        <img src="images/herramientas.jpg" class="d-block w-100">
-      </div>
-      <div class="carousel-item">
-        <img src="images/sumo.jpg" class="d-block w-100">
-      </div>
-      <div class="carousel-item">
-        <img src="images/rack.jpg" class="d-block w-100">
-      </div>
-    </div> 
-  
 
-    <!-- Controles del carrusel-->
-    <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  
-  </div>
-    </div>
- <!-- Sección tarjetas de concursos -->
- <h3 class="text-center text-success p-4">Concursos de robótica</h3>
+<div class="container">
+<!-- Sección tarjetas de competencias -->
+<h3 class="text-center text-success p-4">Actividades en la sala</h3>
   <div class="row row-cols-1 row-cols-md-3 g-4">
         <?php 
-        $consulta = "SELECT * FROM concursos_rob";
+        $consulta = "SELECT * FROM actividades";
         $resultado = mysqli_query($conexion, $consulta);
         
         // Mostrar tarjetas si la fecha de la competencia es > a hoy
         while($fila = mysqli_fetch_array($resultado)){ 
-          $fecha_con = $fila['fecha_con'];
-          $fecha_actual = date('Y-m-d', time());
-            if($fecha_con > $fecha_actual) { 
+          $descripción = $fila['desc_act'];
         ?>
       <div class="col">
         <a href="con_inscribir.php?id=<?php echo $fila['cod_con']?>">
           <div class="card h-100">
-          
             <img src="images/sumo.jpg" class="card-img-top">
             <div class="card-body">
               <h5 class="card-title">
-                Nombre: <?php echo $fila['nom_con']; ?>
+                Descripción: <?php echo $fila['desc_act']; ?>
               </h5>
-              <p class="card-text">Fecha: <?php echo $fila['fecha_con']?></p>
             </div>
           </div>
         </a>
       </div>
-        <?php }mysqli_close($conexion);}?> 
+        <?php }  ?> 
   </div>
-
 </div>
-
-<?php
-include("includes/footer.php");
-?>
+<?php include("includes/footer.php"); ?>

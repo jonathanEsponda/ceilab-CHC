@@ -75,12 +75,6 @@
                                 <label for="clave_u" class="text p-1">Contraseña:</label><br>
                                 <input type="password" name="clave_u" id="clave_u_signup" class="form-control" >
                             </div>
-                            <ul>
-                              <!-- Mensajes -->
-                              <?php if (!empty($mensajes)): ?>
-                              <?php echo $mensajes ?>
-                              <?php endif; ?>
-                            </ul>
                             <div class="form-group pt-2">
                                 <input type="submit" name="registrar" class="btn btn-success btn-md" value="Registrar">
                             </div>

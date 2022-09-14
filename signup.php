@@ -20,19 +20,28 @@ if (isset($_POST['registrar'])){
         $resultado = mysqli_query($conexion, $consulta);
         
         if ($resultado){
-            $mensajes .= "<li class='mensajeVerde'>Usuario registrado correctamente</li>"; 
-            require "login.vista.php";
+            echo'<script>
+                  alert("Usuario registrado correctamente");
+                  window.location="login.vista.php";
+                  </script>';
         } else {
-            $mensajes .= "<li class='mensajeRojo'>El usuario no se registró</li>"; 
-            require "signup.vista.php";
+            echo'<script>
+                  alert("No se pudo registrar el usuario");
+                  window.location="signup.vista.php";
+                  </script>';
         }
+        
         }else {
-            $mensajes .= "<li class='mensajeRojo'>Ingrese la cédula correctamente, sin puntos ni guiones</li>"; 
-            require "signup.vista.php";
+            echo'<script>
+                  alert("Ingrese la cédula correctamente, sin puntos ni guiones");
+                  window.location="signup.vista.php";
+                  </script>';
         }
         mysqli_close($conexion);
     } else {
-        $mensajes .= "<li class='mensajeRojo'>El usuario no se registró</li>"; 
-            require "signup.vista.php";
+        echo'<script>
+                  alert("El usuario no se registró");
+                  window.location="signup.vista.php";
+                  </script>';
     }
 ?>
