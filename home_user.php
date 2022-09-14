@@ -107,16 +107,6 @@ session_start();
           </div>
         </nav>
 
-<<<<<<< HEAD
-<div class="container">
-
-    <!-- Sección carrusel -->
-  <div id="carousel" class="carousel slide p-5" data-bs-ride="carousel" data-interval="100">
-
-<img src="images/panoramica2.jpg" class="d-block w-100 pt-5">
-=======
->>>>>>> jona
-
 <img src="images/panoramica2.jpg" class="d-block w-100 pt-5" id="panoramica">
 <div class="container">
    <!-- Sección carrusel -->
@@ -156,8 +146,6 @@ session_start();
     </button>
   
   </div>
-
-
 
  <!-- Sección tarjetas de competencias -->
  <h3 class="text-center text-success p-4">Concursos de robótica</h3>

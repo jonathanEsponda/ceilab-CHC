@@ -60,7 +60,7 @@
                                 <input type="text" name="apellido_u" id="apellido_u_signup" class="form-control" >
                             </div>
                             <div class="form-group">
-                                <label for="ced_u" class="text p-1">Cédula de identidad: </label><br>
+                                <label for="ced_u" class="text p-1">Cédula de identidad (sin puntos ni guiones): </label><br>
                                 <input type="text" name="ced_u" id="ced_u_signup" class="form-control" >
                             </div>
                             <div class="form-group">
@@ -74,23 +74,6 @@
                             <div class="form-group">
                                 <label for="clave_u" class="text p-1">Contraseña:</label><br>
                                 <input type="password" name="clave_u" id="clave_u_signup" class="form-control" >
-                            </div>
-                            <div class="form-group">
-                                <label for="cod_tipo" class="text p-1">Tipo de usuario: </label><br>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="cod_tipo" id="cod_tipo_prof" 
-                                    value="2"  checked>
-                                    <label class="form-check-label" for="flexRadio">
-                                    Usuario
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="cod_tipo" id="tipo_u_admin"
-                                    value="1">
-                                    <label class="form-check-label" for="flexRadio">
-                                    Administrador
-                                    </label>
-                                </div>
                             </div>
                             <ul>
                               <!-- Mensajes -->

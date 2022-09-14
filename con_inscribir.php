@@ -140,11 +140,17 @@ if (isset($_POST['con_inscribir'])){
               $nombre = $fila['nombre_u'];
               $apellido = $fila['apellido_u'];
               ?>
-              <nav>
-                <form class="container-fluid justify-content-start"><?php echo $nombre.' '.$apellido?></form>
-              </nav>
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> 
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <?php echo $nombre.' '.$apellido?>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="usuario_editar.php?id=<?php echo $id?>">Editar usuario</a></li>
+                  </ul>
+                </li>
+              </ul>
               
-                
               <!-- Cerrar sesión -->
               <nav class="navbar navbar-light bg-light">
                 <form class="container-fluid justify-content-start">
@@ -180,20 +186,10 @@ if (isset($_POST['con_inscribir'])){
 
 <div class="container p-4">
         <div class="row">
-<<<<<<< HEAD
-            <!-- Mensajes -->
-            
             <div class="col-md-6 mx-auto">
-            <ul>
-                <?php if (!empty($mensajes)): ?>
-                <?php echo $mensajes ?>
-                <?php endif; ?>
-            </ul>
-=======
 
-            <div class="col-md-6 mx-auto">
->>>>>>> jona
             <h3 class="text-center text-success">Inscripción a concurso: <?php echo $nom_con;?></h3>
+            <br>
                 <div class="card card-body ">
                     <form action="con_inscribir.php?id=<?php echo $_GET['id']; ?>" method="POST">
                         <div class="form group">
