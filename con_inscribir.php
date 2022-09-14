@@ -50,16 +50,16 @@ if (isset($_POST['con_inscribir'])){
               if (!$resultado3) {
                 die("Consulta 2 fallida");
                 } else{
-                $mensajes .= "<li class='mensajeVerde'>Concursante registrado correctamente</li>"; 
+                  echo'<script>
+                  alert("Se regitró correctamente en el concurso");
+                  window.location="home_user.php";
+                  </script>';
               }
               } else {
              die("Consulta 3 fallida");
              echo "Consulta 3 fallida";
            }
                
-                 
-                  
-                
         mysqli_free_result($resultado2);
         mysqli_close($conexion);
 }       
@@ -134,9 +134,9 @@ if (isset($_POST['con_inscribir'])){
               if(isset($_SESSION['id'])){
                 $id = $_SESSION['id'];
 
-              $consulta = "SELECT * FROM usuarios WHERE cod_u = $id";
-              $resultado = mysqli_query($conexion, $consulta);
-              $fila = mysqli_fetch_array($resultado);
+              $consulta4 = "SELECT * FROM usuarios WHERE cod_u = $id";
+              $resultado4 = mysqli_query($conexion, $consulta4);
+              $fila = mysqli_fetch_array($resultado4);
               $nombre = $fila['nombre_u'];
               $apellido = $fila['apellido_u'];
               ?>

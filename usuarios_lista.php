@@ -151,8 +151,11 @@ if(isset($_SESSION['id'])){
                                 <td><?php echo $fila['tel_u']?></td>
                                 <td><?php echo $fila['nom_tipo']?></td>
                                 <td>
-                                    <a href="usuario_editar.php?id=<?php echo $fila['cod_u']?>" class="btn btn-secondary">
+                                    <a href="usuario_editar.php?id=<?php echo $fila['cod_u']?>" class="btn btn-primary">
                                         Editar
+                                    </a>
+                                    <a href="usuario_borrar.php?id=<?php echo $fila['cod_u']?>" class="btn btn-danger">
+                                        Borrar
                                     </a>
                                 </td>
                             </tr>

@@ -37,7 +37,7 @@
                         <form id="login-form" class="form" action="login.php" method="POST">
                             <h3 class="text-center text-info">Ingresar</h3>
                             <div class="form-group">
-                                <label for="ced_u" class="text-info p-1">Cedula de usuario:</label><br>
+                                <label for="ced_u" class="text-info p-1">Cedula de usuario (sin puntos ni guiones):</label><br>
                                 <input type="text" name="ced_u" id="ced_u" class="form-control" required>
                             </div>
                             <div class="form-group">

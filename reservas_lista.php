@@ -124,7 +124,7 @@ if(isset($_SESSION['id'])){
 
 <div class="row">
     
-            <h3 class="text-center text-success">Reservas válidas de la sala</h3>
+            <h3 class="text-center text-success">Reservas de la sala</h3>
     <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -136,6 +136,7 @@ if(isset($_SESSION['id'])){
                             <th>Fecha de la reserva</th>
                             <th>Hora de inicio</th>
                             <th>Hora de fin</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -153,58 +154,17 @@ if(isset($_SESSION['id'])){
                                 <td><?php echo $fila['propuesta_res']?></td>
                                 <td><?php echo $fila['fecha_res']?></td>
                                 <td><?php echo $fila['hora_ini_res']?></td>
-                                <td><?php echo $fila['hora_fin_res']?></td> 
-                            </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
-    </div>
-
-
-
-<div class="row">
-    
-            <h3 class="text-center text-success">Solicitudes de reserva de la sala</h3>
-    <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Código</th>
-                            <th>Grupo</th>
-                            <th>Docente</th>
-                            <th>Área de trabajo</th>
-                            <th>Propuesta</th>
-                            <th>Fecha de la reserva</th>
-                            <th>Hora de inicio</th>
-                            <th>Hora de fin</th>
-                            <th>Validar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php 
-                        $consulta = "SELECT * FROM reservas INNER JOIN usuarios ON reservas.cod_u = usuarios.cod_u 
-                        INNER JOIN areas_reserva ON reservas.cod_area = areas_reserva.cod_area WHERE reservas.validacion = 0 ORDER BY reservas.fecha_res DESC";
-                        $result_comp = mysqli_query($conexion, $consulta);
-
-                        while($fila = mysqli_fetch_array($result_comp)) { ?>
-                            <tr>
-                                <td><?php echo $fila['cod_res']?></td>
-                                <td><?php echo $fila['grupo_res']?></td>
-                                <td><?php echo $fila['apellido_u']?></td>
-                                <td><?php echo $fila['nom_area']?></td>
-                                <td><?php echo $fila['propuesta_res']?></td>
-                                <td><?php echo $fila['fecha_res']?></td>
-                                <td><?php echo $fila['hora_ini_res']?></td>
-                                <td><?php echo $fila['hora_fin_res']?></td> 
+                                <td><?php echo $fila['hora_fin_res']?></td>
                                 <td>
-                                    <a href="reservas_validar.php?id=<?php echo $fila['cod_res']?>" class="btn btn-secondary">
-                                        Validar
+                                    <a href="reservas_borrar.php?id=<?php echo $fila['cod_res']?>" class="btn btn-danger">
+                                    Borrar
                                     </a>
-                                </td>
+                                </td> 
                             </tr>
                         <?php } ?>
                     </tbody>
                 </table>
-    </div>
+    </div>  
 
 </div>
 <?php include("includes/footer.php");?>

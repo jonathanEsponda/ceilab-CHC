@@ -1,17 +1,18 @@
-<?php include('database/db.php');
+<?php 
+include("database/db.php");
 session_start();
 
-  if(!isset($_SESSION['rol'])){
-          header('location: login.vista.php');
-      }else{
-          if($_SESSION['rol'] != 1){
-              header('location: login.vista.php');
-          }
-      }
+if(!isset($_SESSION['rol'])){
+    header('location:login.vista.php');
+} else{
+    if($_SESSION['rol'] != 1){
+        header('location: login.vista.php');
+    }
+}
+if(isset($_SESSION['id'])){
+  $id = $_SESSION['id'];
+}   
 
-  if(isset($_SESSION['id'])){
-    $id = $_SESSION['id'];
-  }   
 ?>
 
 <!doctype html>
@@ -29,8 +30,8 @@ session_start();
   </head>
   <body>
     <!-- Barra de navegación -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a href="#">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a href="home_admin.php">
           <IMG SRC="images/logo.jpg" ALIGN=LEFT WIDTH=60 HEIGHT=35 HSPACE="10" VSPACE="10" >   
           </a>
           <div class="container-fluid">
@@ -40,17 +41,16 @@ session_start();
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
                 
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Reservas
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="reservas_sin_validar.php">Solicitudes sin validar</a></li>
-                    <li><a class="dropdown-item" href="reservas_lista.php">Lista de reservas</a></li>
+                    <li><a class="dropdown-item" href="#">Reservas a la sala</a></li>
                   </ul>  
                 </li>
+
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Actividades
@@ -79,14 +79,10 @@ session_start();
                   </ul> 
                 </li>
 
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Materiales
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="materiales.php">Administrar materiales</a></li>
-                  </ul>  
+                <li class="nav-item">
+                  <a class="nav-link" href="materiales.php">Materiales</a>
                 </li>
+              
                 <li class="nav-item">
                   <a class="nav-link" href="nosotros.php">Nosotros</a>
                 </li>
@@ -99,7 +95,7 @@ session_start();
               $nombre = $fila['nombre_u'];
               $apellido = $fila['apellido_u'];
               ?>
-             <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> 
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> 
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <?php echo $nombre.' '.$apellido?>
@@ -109,6 +105,7 @@ session_start();
                   </ul>
                 </li>
               </ul>
+
               <!-- Cerrar sesión -->
               <nav class="navbar navbar-light bg-light">
                 <form class="container-fluid justify-content-start">
@@ -123,81 +120,54 @@ session_start();
           </div>
         </nav>
 
-        
-        <img src="images/panoramica2.jpg" class="d-block w-100 pt-5" id="panoramica">
-        
-  <div class="container">
+<div class="container p-4">
 
-    <!-- Sección carrusel -->
-    <div id="carousel" class="carousel slide p-5" data-bs-ride="carousel" data-interval="100">
-    <div class="carousel-inner">
-      
-    <div class="carousel-item active">
-        <img src="images/sumo1.jpg" class="d-block w-100">
-      </div>
-      
-      <div class="carousel-item">
-        <img src="images/impresora.jpg" class="d-block w-100">
-      </div>
-      <div class="carousel-item">
-        <img src="images/muestra.jpg" class="d-block w-100">
-      </div>      
-      <div class="carousel-item">
-        <img src="images/herramientas.jpg" class="d-block w-100">
-      </div>
-      <div class="carousel-item">
-        <img src="images/sumo.jpg" class="d-block w-100">
-      </div>
-      <div class="carousel-item">
-        <img src="images/rack.jpg" class="d-block w-100">
-      </div>
-    </div> 
-  
+<div class="row">
+    
+            <h3 class="text-center text-success">Solicitudes de reserva de la sala</h3>
+    <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Grupo</th>
+                            <th>Docente</th>
+                            <th>Área de trabajo</th>
+                            <th>Propuesta</th>
+                            <th>Fecha de la reserva</th>
+                            <th>Hora de inicio</th>
+                            <th>Hora de fin</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                        $consulta = "SELECT * FROM reservas INNER JOIN usuarios ON reservas.cod_u = usuarios.cod_u 
+                        INNER JOIN areas_reserva ON reservas.cod_area = areas_reserva.cod_area WHERE reservas.validacion = 0 ORDER BY reservas.fecha_res DESC";
+                        $result_comp = mysqli_query($conexion, $consulta);
 
-    <!-- Controles del carrusel-->
-    <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  
-  </div>
-
- <!-- Sección tarjetas de concursos -->
- <h3 class="text-center text-success p-4">Concursos de robótica</h3>
-  <div class="row row-cols-1 row-cols-md-3 g-4">
-        <?php 
-        $consulta = "SELECT * FROM concursos_rob";
-        $resultado = mysqli_query($conexion, $consulta);
-        
-        // Mostrar tarjetas si la fecha de la competencia es > a hoy
-        while($fila = mysqli_fetch_array($resultado)){ 
-          $fecha_con = $fila['fecha_con'];
-          $fecha_actual = date('Y-m-d', time());
-            if($fecha_con > $fecha_actual) { 
-        ?>
-      <div class="col">
-        <a href="con_inscribir.php?id=<?php echo $fila['cod_con']?>">
-          <div class="card h-100">
-          
-            <img src="images/sumo.jpg" class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title">
-                Nombre: <?php echo $fila['nom_con']; ?>
-              </h5>
-              <p class="card-text">Fecha: <?php echo $fila['fecha_con']?></p>
-            </div>
-          </div>
-        </a>
-      </div>
-        <?php } }?> 
-  </div>
+                        while($fila = mysqli_fetch_array($result_comp)) { ?>
+                            <tr>
+                                <td><?php echo $fila['cod_res']?></td>
+                                <td><?php echo $fila['grupo_res']?></td>
+                                <td><?php echo $fila['apellido_u']?></td>
+                                <td><?php echo $fila['nom_area']?></td>
+                                <td><?php echo $fila['propuesta_res']?></td>
+                                <td><?php echo $fila['fecha_res']?></td>
+                                <td><?php echo $fila['hora_ini_res']?></td>
+                                <td><?php echo $fila['hora_fin_res']?></td> 
+                                <td>
+                                    <a href="reservas_validar.php?id=<?php echo $fila['cod_res']?>" class="btn btn-success">
+                                        Validar
+                                    </a>
+                                    <a href="reservas_borrar.php?id=<?php echo $fila['cod_res']?>" class="btn btn-danger">
+                                        Borrar
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+    </div>
 
 </div>
-
-<?php
-include("includes/footer.php");
-?>
+<?php include("includes/footer.php");?>
