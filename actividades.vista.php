@@ -110,10 +110,10 @@ session_start();
         </nav>
 
 
-<div class="container">
+<div class="container pt-5">
 <!-- Sección tarjetas de Actividades -->
 <h3 class="text-center text-success p-4">Actividades en la sala</h3>
-  <div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="row row-cols-1 row-cols-md-3 g-4 pt-5">
         <?php 
         $consulta = "SELECT * FROM actividades" ;
         $resultado = mysqli_query($conexion, $consulta);
@@ -135,6 +135,6 @@ session_start();
         </a>
       </div>
         <?php }  ?> 
-  </div>
+  </div><br><br><br><br>
 </div>
 <?php include("includes/footer.php"); ?>

@@ -110,13 +110,15 @@ session_start();
           </div>
         </nav>
 
-        <div class="container">
+        <div class="container pt-5">
+          <div class="row pt-5">
                 <div class="col-md-6 mx-auto">
                     <?php 
                     if(isset($_GET['id'])){
                         $cod_act = $_GET['id'];
                         
-                        $consulta = "SELECT * FROM actividades INNER JOIN reservas ON actividades.cod_res = reservas.cod_res 
+                        $consulta = "SELECT * FROM actividades 
+                        INNER JOIN reservas ON actividades.cod_res = reservas.cod_res 
                         INNER JOIN usuarios ON reservas.cod_u = usuarios.cod_u 
                         INNER JOIN areas_reserva ON reservas.cod_area = areas_reserva.cod_area
                         WHERE cod_act = $cod_act";
@@ -124,10 +126,13 @@ session_start();
                          if (mysqli_num_rows($resultado) == 1) {
                             $fila = mysqli_fetch_array($resultado);
                             $desc_act = $fila['desc_act'];
+                            $nombre_u = $fila['nombre_u'];
                             $apellido_u = $fila['apellido_u'];
                             $grupo_res = $fila['grupo_res'];
                             $nom_area = $fila['nom_area'];
+                            //$nom_mat = $fila['nom_mat'];
                          }
+                          
                     }
                     ?>
                     <div class="card h-100 pt-5">
@@ -136,14 +141,41 @@ session_start();
                         
                             <h3 class="card-title">Descripción de la actividad: </h3>
                             <h4 class="card-title"> <?php echo $desc_act?></h4><br>
-                            <h4 class="card-title">Docente: <?php echo $apellido_u?></h4><br>
+                            <h4 class="card-title">Docente: <?php echo $nombre_u." ".$apellido_u?></h4><br>
                             <h4 class="card-title">Grupo: <?php echo $grupo_res?></h4><br>
                             <h4 class="card-title">Area de trabajo: <?php echo $nom_area?></h4>
-                            
+                      
                         </div>
-                        </div>
+                      </div>
+                      </div>
+                      <div class="col-md-4">
+                      <table class="table table-bordered ">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Actividad</th>
+                            <th>Materiales utilizados</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                          $consulta2 = "SELECT * FROM actividades 
+                          INNER JOIN utiliza ON actividades.cod_act = utiliza.cod_act
+                          INNER JOIN materiales ON utiliza.cod_mat = materiales.cod_mat
+                          WHERE cod_act = $cod_act";
+                          $resultado2 = mysqli_query($conexion, $consulta2);
+                          
+                          while($fila2 = mysqli_fetch_array($resultado)) { ?>
+                          <tr>
+                                <td><?php echo $fila2['desc_act']?></td>
+                                <td><?php echo $fila2['nom_mat']?></td>
+                          <tr>
+                            <?php } ?>
+                    </tbody>
+                      </table>
+                            </div>
                     
 
+                
                 </div>
         </div>
         <?php include("includes/footer.php"); ?>

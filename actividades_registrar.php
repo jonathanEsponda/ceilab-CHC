@@ -44,15 +44,11 @@ if(isset($_GET['id'])) {
     <title>CEILAB</title>
   </head>
   <body>
-    <!-- Barra de navegación -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          
-        <?php if($_SESSION['rol'] == 1) {?>
-            <a href="home_admin.php"><IMG SRC="images/logo.jpg" ALIGN=LEFT WIDTH=60 HEIGHT=35 HSPACE="10" VSPACE="10" ></a>
-              <?php } else { ?>
-                <a href="home_user.php"><IMG SRC="images/logo.jpg" ALIGN=LEFT WIDTH=60 HEIGHT=35 HSPACE="10" VSPACE="10" ></a>
-                <?php } ?><a href="#">
-
+   <!-- Barra de navegación -->
+   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a href="home_user.php">
+          <IMG SRC="images/logo.jpg" ALIGN=LEFT WIDTH=60 HEIGHT=35 HSPACE="10" VSPACE="10" >   
+          </a>
           <div class="container-fluid">
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,7 +71,8 @@ if(isset($_GET['id'])) {
                     Actividades
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="actividades.vista.php">Actividades realizadas en la sala</a></li>
+                    <li><a class="dropdown-item" href="actividades.vista.php">Actividades realizadas</a></li>
+                    <li><a class="dropdown-item" href="act_res.php">Registrar actividad</a></li>
                   </ul>  
                 </li>
 

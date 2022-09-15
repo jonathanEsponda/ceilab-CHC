@@ -82,7 +82,7 @@ session_start();
                 <li class="nav-item">
                   <a class="nav-link" href="materiales.php">Materiales</a>
                 </li>
-                <?php } else if (isset($_SESSION['rol']) && $_SESSION['rol']==1) { ?>
+                <?php } else if (isset($_SESSION['rol']) && $_SESSION['rol']==2) { ?>
 
                   <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

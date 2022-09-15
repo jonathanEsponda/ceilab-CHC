@@ -12,7 +12,7 @@
         } else {
             echo'<script>
                   alert("La reserva fue borrada correctamente");
-                  window.location="home_admin.php";
+                  window.location="reservas_sin_validar.php";
                   </script>';
         }   
         mysqli_close($conexion);

@@ -4,10 +4,6 @@ session_start();
  
 if(!isset($_SESSION['rol'])){
    header('location: login.vista.php');
- }else{
-   if($_SESSION['rol'] != 2){
-       header('location: login.vista.php');
-   }
  }
   
 if(isset($_SESSION['id'])){
@@ -31,9 +27,11 @@ if(isset($_SESSION['id'])){
   <body>
     <!-- Barra de navegación -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a href="home_user.php">
-          <IMG SRC="images/logo.jpg" ALIGN=LEFT WIDTH=60 HEIGHT=35 HSPACE="10" VSPACE="10" >   
-          </a>
+        <?php if($_SESSION['rol'] == 1) {?>
+            <a href="home_admin.php"><IMG SRC="images/logo.jpg" ALIGN=LEFT WIDTH=60 HEIGHT=35 HSPACE="10" VSPACE="10" ></a>
+              <?php } else { ?>
+                <a href="home_user.php"><IMG SRC="images/logo.jpg" ALIGN=LEFT WIDTH=60 HEIGHT=35 HSPACE="10" VSPACE="10" ></a>
+                <?php } ?>
           <div class="container-fluid">
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -99,10 +97,10 @@ if(isset($_SESSION['id'])){
           </div>
         </nav>
 
-<div class="container">
+<div class="container pt-5"><br>
         <!-- Sección tarjetas de competencias -->
  <h3 class="text-center text-success p-4">Concursos de robótica</h3>
-  <div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="row row-cols-1 row-cols-md-3 g-4 pt-4">
         <?php 
         $consulta = "SELECT * FROM concursos_rob";
         $resultado = mysqli_query($conexion, $consulta);

@@ -2,10 +2,6 @@
 session_start();
  if(!isset($_SESSION['rol'])){
    header('location: login.vista.php');
- }else{
-   if($_SESSION['rol'] != 2){
-       header('location: login.vista.php');
-   }
  }
 
  if(isset($_SESSION['id'])){
@@ -28,14 +24,10 @@ session_start();
   </head>
   <body>
     <!-- Barra de navegación -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          
-        <?php if($_SESSION['rol'] == 1) {?>
-            <a href="home_admin.php"><IMG SRC="images/logo.jpg" ALIGN=LEFT WIDTH=60 HEIGHT=35 HSPACE="10" VSPACE="10" ></a>
-              <?php } else { ?>
-                <a href="home_user.php"><IMG SRC="images/logo.jpg" ALIGN=LEFT WIDTH=60 HEIGHT=35 HSPACE="10" VSPACE="10" ></a>
-                <?php } ?><a href="#">
-
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a href="home_user.php">
+          <IMG SRC="images/logo.jpg" ALIGN=LEFT WIDTH=60 HEIGHT=35 HSPACE="10" VSPACE="10" >   
+          </a>
           <div class="container-fluid">
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,7 +50,8 @@ session_start();
                     Actividades
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="actividades.vista.php">Actividades realizadas en la sala</a></li>
+                    <li><a class="dropdown-item" href="actividades.vista.php">Actividades realizadas</a></li>
+                    <li><a class="dropdown-item" href="act_res.php">Registrar actividad</a></li>
                   </ul>  
                 </li>
 
@@ -110,10 +103,10 @@ session_start();
           </div>
         </nav>
 
-        <div class="container p-4">
-        <h3 class="text-center text-success">Registrar actividad</h3>
+        <div class="container p-4"><br>
+        <h3 class="text-center text-success">Registrar actividad</h3><br><br>
         <br>
-<div class="row">
+<div class="row pt-5">
     
             
     <table class="table table-bordered">

@@ -41,22 +41,24 @@ if(isset($_SESSION['id'])){
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
                 
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Reservas
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="reservas_lista.php">Reservas a la sala</a></li>
+                    <li><a class="dropdown-item" href="reservas_sin_validar.php">Solicitudes sin validar</a></li>
+                    <li><a class="dropdown-item" href="reservas_lista.php">Lista de reservas</a></li>                    
                   </ul>  
                 </li>
-
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Actividades
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="actividades_lista.php">Actividades realizadas</a></li>
+                    
                   </ul>  
                 </li>
 
@@ -76,13 +78,18 @@ if(isset($_SESSION['id'])){
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="con_rob.php">Administrar concursos</a></li>
                     <li><a class="dropdown-item" href="con_inscriptos.php">Inscriptos</a></li>
+                    <li><a class="dropdown-item" href="concursos.vista.php">Inscripción a concursos</a></li>
                   </ul> 
                 </li>
 
-                <li class="nav-item">
-                  <a class="nav-link" href="materiales.php">Materiales</a>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Materiales
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="materiales.php">Administrar materiales</a></li>
+                  </ul>  
                 </li>
-              
                 <li class="nav-item">
                   <a class="nav-link" href="nosotros.php">Nosotros</a>
                 </li>
@@ -95,10 +102,16 @@ if(isset($_SESSION['id'])){
               $nombre = $fila['nombre_u'];
               $apellido = $fila['apellido_u'];
               ?>
-              <nav>
-                <form class="container-fluid justify-content-start"><?php echo $nombre.' '.$apellido?></form>
-              </nav>
-
+             <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> 
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <?php echo $nombre.' '.$apellido?>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="usuario_editar.php?id=<?php echo $id?>">Editar usuario</a></li>
+                  </ul>
+                </li>
+              </ul>
               <!-- Cerrar sesión -->
               <nav class="navbar navbar-light bg-light">
                 <form class="container-fluid justify-content-start">

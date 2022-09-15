@@ -68,8 +68,8 @@
   </head>
   <body>
     <!-- Barra de navegación -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a href="home_admin.php">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a href="#">
           <IMG SRC="images/logo.jpg" ALIGN=LEFT WIDTH=60 HEIGHT=35 HSPACE="10" VSPACE="10" >   
           </a>
           <div class="container-fluid">
@@ -79,13 +79,15 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
                 
-              <li class="nav-item dropdown">
+                <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Reservas
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="reservas_lista.php">Reservas a la sala</a></li>
+                    <li><a class="dropdown-item" href="reservas_sin_validar.php">Solicitudes sin validar</a></li>
+                    <li><a class="dropdown-item" href="reservas_lista.php">Lista de reservas</a></li>                    
                   </ul>  
                 </li>
                 <li class="nav-item dropdown">
@@ -94,6 +96,7 @@
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="actividades_lista.php">Actividades realizadas</a></li>
+                    
                   </ul>  
                 </li>
 
@@ -113,6 +116,7 @@
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="con_rob.php">Administrar concursos</a></li>
                     <li><a class="dropdown-item" href="con_inscriptos.php">Inscriptos</a></li>
+                    <li><a class="dropdown-item" href="concursos.vista.php">Inscripción a concursos</a></li>
                   </ul> 
                 </li>
 
@@ -128,8 +132,7 @@
                   <a class="nav-link" href="nosotros.php">Nosotros</a>
                 </li>
               </ul>
-
-              <!-- Nombre y apellido del usuario ingresado -->
+                <!-- Nombre y apellido del usuario ingresado -->
               <?php 
               $consulta = "SELECT * FROM usuarios WHERE cod_u = $id";
               $resultado = mysqli_query($conexion, $consulta);
@@ -137,11 +140,16 @@
               $nombre = $fila['nombre_u'];
               $apellido = $fila['apellido_u'];
               ?>
-              <nav>
-                <form class="container-fluid justify-content-start"><?php echo $nombre.' '.$apellido?></form>
-              </nav>
+             <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> 
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <?php echo $nombre.' '.$apellido?>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="usuario_editar.php?id=<?php echo $id?>">Editar usuario</a></li>
+                  </ul>
+                </li>
               </ul>
-
               <!-- Cerrar sesión -->
               <nav class="navbar navbar-light bg-light">
                 <form class="container-fluid justify-content-start">
@@ -150,11 +158,6 @@
                 </a>  
                 </form>
               </nav>
-              
-              <span></span>
-            </div>
-          </div>
-        </nav>
 
     <div class="container p-5">
         <div class="row">

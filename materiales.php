@@ -138,7 +138,7 @@ if(isset($_SESSION['id'])){
         <!-- Tabla -->
         <div class= "col-md-8">
         <h3 class="text-center text-info">Materiales del laboratorio</h3>
-            <table class="table table-bordered">
+            <table class="table table-bordered pb-5" >
                     <thead>
                         <tr>
                             <th>Código</th>

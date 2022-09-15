@@ -39,7 +39,7 @@ if(!isset($_SESSION['rol'])){
   </head>
   <body>
     <!-- Barra de navegación -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <a href="home_user.php">
           <IMG SRC="images/logo.jpg" ALIGN=LEFT WIDTH=60 HEIGHT=35 HSPACE="10" VSPACE="10" >   
           </a>
@@ -50,21 +50,23 @@ if(!isset($_SESSION['rol'])){
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                
               <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Reservar sala
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="reservar.vista.php">Reservar la sala Ceilab</a></li>
-                  </ul>  
+                    <li><a class="dropdown-item" href="reservas_usuario.php">Mis reservas</a></li>
+                  </ul>
+                  
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Actividades
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Actividades realizadas en la sala</a></li>
+                    <li><a class="dropdown-item" href="actividades.vista.php">Actividades realizadas</a></li>
+                    <li><a class="dropdown-item" href="act_res.php">Registrar actividad</a></li>
                   </ul>  
                 </li>
 
@@ -73,7 +75,7 @@ if(!isset($_SESSION['rol'])){
                     Concursos Ceilab
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="con_rob_vista_usuario.php">Inscripción a concursos</a></li>
+                    <li><a class="dropdown-item" href="concursos.vista.php">Inscripción a concursos</a></li>
                   </ul> 
                 </li>
 
@@ -82,18 +84,26 @@ if(!isset($_SESSION['rol'])){
                 </li>
               </ul>
 
+              <!-- Nombre y apellido del usuario ingresado -->
+              <?php 
+              $consulta = "SELECT * FROM usuarios WHERE cod_u = $id";
+              $resultado = mysqli_query($conexion, $consulta);
+              $fila = mysqli_fetch_array($resultado);
+              $nombre = $fila['nombre_u'];
+              $apellido = $fila['apellido_u'];
+              ?>
               
               <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> 
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <?php echo $nombre_u.' '.$apellido_u?>
+                <?php echo $nombre.' '.$apellido?>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="usuario_editar.php?id=<?php echo $id?>">Editar usuario</a></li>
                   </ul>
                 </li>
               </ul>
-
+              
               <!-- Cerrar sesión -->
               <nav class="navbar navbar-light bg-light">
                 <form class="container-fluid justify-content-start">

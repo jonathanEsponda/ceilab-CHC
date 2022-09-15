@@ -4,11 +4,8 @@ session_start();
 
 if(!isset($_SESSION['rol'])){
     header('location:login.vista.php');
-} else{
-    if($_SESSION['rol'] != 2){
-        header('location:login.vista.php');
-    }
-}
+} 
+
 if(isset($_SESSION['id'])){
   $id = $_SESSION['id'];
 }   
@@ -30,8 +27,8 @@ if(isset($_SESSION['id'])){
   </head>
   <body>
     <!-- Barra de navegación -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a href="#">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a href="home_user.php">
           <IMG SRC="images/logo.jpg" ALIGN=LEFT WIDTH=60 HEIGHT=35 HSPACE="10" VSPACE="10" >   
           </a>
           <div class="container-fluid">
@@ -47,14 +44,17 @@ if(isset($_SESSION['id'])){
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="reservar.vista.php">Reservar la sala Ceilab</a></li>
-                  </ul>  
+                    <li><a class="dropdown-item" href="reservas_usuario.php">Mis reservas</a></li>
+                  </ul>
+                  
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Actividades
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="actividades_vista.php">Actividades realizadas en la sala</a></li>
+                    <li><a class="dropdown-item" href="actividades.vista.php">Actividades realizadas</a></li>
+                    <li><a class="dropdown-item" href="act_res.php">Registrar actividad</a></li>
                   </ul>  
                 </li>
 
@@ -92,7 +92,6 @@ if(isset($_SESSION['id'])){
                 </li>
               </ul>
               
-                
               <!-- Cerrar sesión -->
               <nav class="navbar navbar-light bg-light">
                 <form class="container-fluid justify-content-start">
@@ -108,11 +107,11 @@ if(isset($_SESSION['id'])){
         </nav>
 
 
-        <div class="container p-4">
+        <div class="container pt-5">
 
-<div class="row">
+<div class="row pt-5">
     
-            <h3 class="text-center text-success">Mis reservas de la sala Ceilab</h3>
+            <h3 class="text-center text-success">Mis reservas de la sala Ceilab</h3><br><br><br><br>
     <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -148,5 +147,5 @@ if(isset($_SESSION['id'])){
                     </tbody>
                 </table>
     </div>
-</div>
+</div><br><br><br><br>
 <?php include("includes/footer.php"); ?>

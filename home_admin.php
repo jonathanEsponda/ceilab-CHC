@@ -48,7 +48,7 @@ session_start();
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="reservas_sin_validar.php">Solicitudes sin validar</a></li>
-                    <li><a class="dropdown-item" href="reservas_lista.php">Lista de reservas</a></li>
+                    <li><a class="dropdown-item" href="reservas_lista.php">Lista de reservas</a></li>                    
                   </ul>  
                 </li>
                 <li class="nav-item dropdown">
@@ -57,6 +57,7 @@ session_start();
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="actividades_lista.php">Actividades realizadas</a></li>
+                    
                   </ul>  
                 </li>
 
@@ -76,6 +77,7 @@ session_start();
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="con_rob.php">Administrar concursos</a></li>
                     <li><a class="dropdown-item" href="con_inscriptos.php">Inscriptos</a></li>
+                    <li><a class="dropdown-item" href="concursos.vista.php">Inscripción a concursos</a></li>
                   </ul> 
                 </li>
 

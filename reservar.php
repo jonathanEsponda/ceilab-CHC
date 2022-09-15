@@ -1,6 +1,7 @@
 <?php 
 include("database/db.php");
 
+
  if(isset($_GET['id'])) {
      $id = $_GET['id'];
  }
@@ -28,8 +29,9 @@ include("database/db.php");
         echo'<script>
         alert("Solicitud de reserva realizada correctamente");
         window.location="home_user.php";
-      </script>';  
-  } else {
+        </script>';  
+        } 
+        else {
     echo'<script>
         alert("No se pudo realizar la solicitud");
         window.location="home_user.php";

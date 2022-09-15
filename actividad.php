@@ -134,18 +134,13 @@ if (isset($_POST['registrar'])){
         $resultado17 = mysqli_query($conexion, $consulta17);
     }
 
-    
-    
-    if(!$resultado3){
-            die("Consulta 3 fallida");
-        } else {
             echo'<script>
                   alert("Se regitró correctamente la actividad");
                   window.location="home_user.php";
                   </script>';
         }
     }
-  } else {
+   else {
     echo'<script>
         alert("No se pudo registrar la actividad");
         window.location="actividades_registrar.php";

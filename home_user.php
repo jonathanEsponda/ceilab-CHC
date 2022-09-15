@@ -29,7 +29,7 @@ session_start();
   <body>
     <!-- Barra de navegación -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a href="#">
+          <a href="home_user.php">
           <IMG SRC="images/logo.jpg" ALIGN=LEFT WIDTH=60 HEIGHT=35 HSPACE="10" VSPACE="10" >   
           </a>
           <div class="container-fluid">
@@ -176,10 +176,6 @@ session_start();
         </a>
       </div>
         <?php } } ?> 
-  </div>
-
-  <div class="row">
-  <a href="reservar.vista.php?id=<?php echo $id; mysqli_close($conexion);?>">Reservar la sala CEILAB</a>
   </div>
 
 </div>
