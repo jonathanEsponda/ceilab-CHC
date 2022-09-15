@@ -29,12 +29,13 @@ session_start();
   <body>
     <!-- Barra de navegación -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <!-- Icono Home según rol -->
+          
         <?php if($_SESSION['rol'] == 1) {?>
             <a href="home_admin.php"><IMG SRC="images/logo.jpg" ALIGN=LEFT WIDTH=60 HEIGHT=35 HSPACE="10" VSPACE="10" ></a>
               <?php } else { ?>
                 <a href="home_user.php"><IMG SRC="images/logo.jpg" ALIGN=LEFT WIDTH=60 HEIGHT=35 HSPACE="10" VSPACE="10" ></a>
-                <?php } ?> 
+                <?php } ?><a href="#">
+
           <div class="container-fluid">
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -109,32 +110,40 @@ session_start();
           </div>
         </nav>
 
+        <div class="container">
+                <div class="col-md-6 mx-auto">
+                    <?php 
+                    if(isset($_GET['id'])){
+                        $cod_act = $_GET['id'];
+                        
+                        $consulta = "SELECT * FROM actividades INNER JOIN reservas ON actividades.cod_res = reservas.cod_res 
+                        INNER JOIN usuarios ON reservas.cod_u = usuarios.cod_u 
+                        INNER JOIN areas_reserva ON reservas.cod_area = areas_reserva.cod_area
+                        WHERE cod_act = $cod_act";
+                         $resultado = mysqli_query($conexion, $consulta);
+                         if (mysqli_num_rows($resultado) == 1) {
+                            $fila = mysqli_fetch_array($resultado);
+                            $desc_act = $fila['desc_act'];
+                            $apellido_u = $fila['apellido_u'];
+                            $grupo_res = $fila['grupo_res'];
+                            $nom_area = $fila['nom_area'];
+                         }
+                    }
+                    ?>
+                    <div class="card h-100 pt-5">
+          
+                        <div class="card-body">
+                        
+                            <h3 class="card-title">Descripción de la actividad: </h3>
+                            <h4 class="card-title"> <?php echo $desc_act?></h4><br>
+                            <h4 class="card-title">Docente: <?php echo $apellido_u?></h4><br>
+                            <h4 class="card-title">Grupo: <?php echo $grupo_res?></h4><br>
+                            <h4 class="card-title">Area de trabajo: <?php echo $nom_area?></h4>
+                            
+                        </div>
+                        </div>
+                    
 
-<div class="container">
-<!-- Sección tarjetas de Actividades -->
-<h3 class="text-center text-success p-4">Actividades en la sala</h3>
-  <div class="row row-cols-1 row-cols-md-3 g-4">
-        <?php 
-        $consulta = "SELECT * FROM actividades" ;
-        $resultado = mysqli_query($conexion, $consulta);
-        
-        // Mostrar tarjetas si la fecha de la competencia es > a hoy
-        while($fila = mysqli_fetch_array($resultado)){ 
-          $descripcion = $fila['desc_act'];
-        
-        ?>
-      <div class="col">
-        <a href="act.php?id=<?php echo $fila['cod_act']?>">
-        <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">
-                Actividad: <?php echo $descripcion ?>
-              </h5>
-            </div>
-          </div>
-        </a>
-      </div>
-        <?php }  ?> 
-  </div>
-</div>
-<?php include("includes/footer.php"); ?>
+                </div>
+        </div>
+        <?php include("includes/footer.php"); ?>

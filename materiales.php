@@ -163,9 +163,6 @@ if(isset($_SESSION['id'])){
                                     <a href="materiales_editar.php?id=<?php echo $fila['cod_mat']?>" class="btn btn-secondary">
                                         Editar
                                     </a>
-                                    <a href="materiales_borrar.php?id=<?php echo $fila['cod_mat']?>" class="btn btn-danger">
-                                        Borrar
-                                    </a>
                                 </td>
                             </tr>
                         <?php } mysqli_close($conexion);?>

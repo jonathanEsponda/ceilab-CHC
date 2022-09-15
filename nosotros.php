@@ -27,12 +27,11 @@ session_start();
         <?php if(!isset($_SESSION['id'])){ ?>  
         <a href="index.php">
           <?php } else if($_SESSION['rol'] == 1) {?>
-            <a href="home_admin.php">
+            <a href="home_admin.php"> <IMG SRC="images/logo.jpg" ALIGN=LEFT WIDTH=60 HEIGHT=35 HSPACE="10" VSPACE="10" ></a>
               <?php } else { ?>
-                <a href="home_user.php">
+                <a href="home_user.php"> <IMG SRC="images/logo.jpg" ALIGN=LEFT WIDTH=60 HEIGHT=35 HSPACE="10" VSPACE="10" ></a>
                 <?php } ?>
-          <IMG SRC="images/logo.jpg" ALIGN=LEFT WIDTH=60 HEIGHT=35 HSPACE="10" VSPACE="10" >   
-          </a>
+                
           <div class="container-fluid">
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

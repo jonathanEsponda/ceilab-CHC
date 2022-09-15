@@ -29,12 +29,13 @@ session_start();
   <body>
     <!-- Barra de navegación -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <!-- Icono Home según rol -->
+          
         <?php if($_SESSION['rol'] == 1) {?>
             <a href="home_admin.php"><IMG SRC="images/logo.jpg" ALIGN=LEFT WIDTH=60 HEIGHT=35 HSPACE="10" VSPACE="10" ></a>
               <?php } else { ?>
                 <a href="home_user.php"><IMG SRC="images/logo.jpg" ALIGN=LEFT WIDTH=60 HEIGHT=35 HSPACE="10" VSPACE="10" ></a>
-                <?php } ?> 
+                <?php } ?><a href="#">
+
           <div class="container-fluid">
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -109,32 +110,52 @@ session_start();
           </div>
         </nav>
 
+        <div class="container p-4">
+        <h3 class="text-center text-success">Registrar actividad</h3>
+        <br>
+<div class="row">
+    
+            
+    <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Grupo</th>
+                            <th>Docente</th>
+                            <th>Área de trabajo</th>
+                            <th>Propuesta</th>
+                            <th>Fecha de la reserva</th>
+                            <th>Hora de inicio</th>
+                            <th>Hora de fin</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                        $consulta = "SELECT * FROM reservas INNER JOIN usuarios ON reservas.cod_u = usuarios.cod_u 
+                        INNER JOIN areas_reserva ON reservas.cod_area = areas_reserva.cod_area WHERE reservas.validacion = 1 ORDER BY reservas.fecha_res DESC";
+                        $result_comp = mysqli_query($conexion, $consulta);
 
-<div class="container">
-<!-- Sección tarjetas de Actividades -->
-<h3 class="text-center text-success p-4">Actividades en la sala</h3>
-  <div class="row row-cols-1 row-cols-md-3 g-4">
-        <?php 
-        $consulta = "SELECT * FROM actividades" ;
-        $resultado = mysqli_query($conexion, $consulta);
-        
-        // Mostrar tarjetas si la fecha de la competencia es > a hoy
-        while($fila = mysqli_fetch_array($resultado)){ 
-          $descripcion = $fila['desc_act'];
-        
-        ?>
-      <div class="col">
-        <a href="act.php?id=<?php echo $fila['cod_act']?>">
-        <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">
-                Actividad: <?php echo $descripcion ?>
-              </h5>
-            </div>
-          </div>
-        </a>
-      </div>
-        <?php }  ?> 
-  </div>
+                        while($fila = mysqli_fetch_array($result_comp)) { ?>
+                            <tr>
+                                <td><?php echo $fila['cod_res']?></td>
+                                <td><?php echo $fila['grupo_res']?></td>
+                                <td><?php echo $fila['apellido_u']?></td>
+                                <td><?php echo $fila['nom_area']?></td>
+                                <td><?php echo $fila['propuesta_res']?></td>
+                                <td><?php echo $fila['fecha_res']?></td>
+                                <td><?php echo $fila['hora_ini_res']?></td>
+                                <td><?php echo $fila['hora_fin_res']?></td>
+                                <td>
+                                    <a href="actividades_registrar.php?id=<?php echo $fila['cod_res']?>" class="btn btn-primary">
+                                    Registrar
+                                    </a>
+                                </td> 
+                            </tr>
+                        <?php } mysqli_close($conexion); ?>
+                    </tbody>
+                </table>
+    </div>  
+
 </div>
-<?php include("includes/footer.php"); ?>
+<?php include("includes/footer.php");?>

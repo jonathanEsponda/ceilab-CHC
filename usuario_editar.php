@@ -7,9 +7,7 @@
     } 
     if(isset($_SESSION['id'])){
       $id = $_SESSION['id'];
-    }   
-  
-    $mensajes = '';
+    }  
 
     if(isset($_GET['id'])) {
         $cod_u = $_GET['id'];

@@ -55,7 +55,7 @@ session_start();
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="actividades.vista.php">Actividades realizadas</a></li>
-                    <li><a class="dropdown-item" href="actividades_registrar.php">Registrar actividad</a></li>
+                    <li><a class="dropdown-item" href="act_res.php">Registrar actividad</a></li>
                   </ul>  
                 </li>
 
